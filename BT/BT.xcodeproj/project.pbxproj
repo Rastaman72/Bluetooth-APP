@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E92C52D419653AD500BADBA7 /* BTViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */; };
+		E92C52D819653B9B00BADBA7 /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D719653B9B00BADBA7 /* Beacon.m */; };
+		E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */; };
 		E944B4F119645291008B6B23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F019645291008B6B23 /* Foundation.framework */; };
 		E944B4F319645291008B6B23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F219645291008B6B23 /* CoreGraphics.framework */; };
 		E944B4F519645291008B6B23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F419645291008B6B23 /* UIKit.framework */; };
@@ -49,6 +52,8 @@
 		E944B5781964542B008B6B23 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B5771964542B008B6B23 /* SystemConfiguration.framework */; };
 		E944B57A19645433008B6B23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B57919645433008B6B23 /* CFNetwork.framework */; };
 		E944B57C19645437008B6B23 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B57B19645437008B6B23 /* CoreBluetooth.framework */; };
+		E9FF3C2119654AD800E2DE6A /* studentSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FF3C2019654AD800E2DE6A /* studentSettingsViewController.m */; };
+		E9FF3C241965586B00E2DE6A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FF3C231965586A00E2DE6A /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +67,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E92C52D219653AD500BADBA7 /* BTViewControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTViewControllerTableViewController.h; path = BTData/BTViewControllerTableViewController.h; sourceTree = "<group>"; };
+		E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTViewControllerTableViewController.m; path = BTData/BTViewControllerTableViewController.m; sourceTree = "<group>"; };
+		E92C52D619653B9B00BADBA7 /* Beacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Beacon.h; path = BTData/Beacon.h; sourceTree = "<group>"; };
+		E92C52D719653B9B00BADBA7 /* Beacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Beacon.m; path = BTData/Beacon.m; sourceTree = "<group>"; };
+		E92C52D91965444800BADBA7 /* BTCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCellTableViewCell.h; path = BTData/BTCellTableViewCell.h; sourceTree = "<group>"; };
+		E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCellTableViewCell.m; path = BTData/BTCellTableViewCell.m; sourceTree = "<group>"; };
 		E944B4ED19645291008B6B23 /* BT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E944B4F019645291008B6B23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E944B4F219645291008B6B23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +147,10 @@
 		E944B5771964542B008B6B23 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E944B57919645433008B6B23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E944B57B19645437008B6B23 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		E9FF3C1F19654AD800E2DE6A /* studentSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = studentSettingsViewController.h; path = Settings/studentSettingsViewController.h; sourceTree = "<group>"; };
+		E9FF3C2019654AD800E2DE6A /* studentSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = studentSettingsViewController.m; path = Settings/studentSettingsViewController.m; sourceTree = "<group>"; };
+		E9FF3C221965586A00E2DE6A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Settings/SettingsViewController.h; sourceTree = "<group>"; };
+		E9FF3C231965586A00E2DE6A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Settings/SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,9 +182,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E92C52D519653ADC00BADBA7 /* BTData */ = {
+			isa = PBXGroup;
+			children = (
+				E92C52D219653AD500BADBA7 /* BTViewControllerTableViewController.h */,
+				E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */,
+				E92C52D619653B9B00BADBA7 /* Beacon.h */,
+				E92C52D719653B9B00BADBA7 /* Beacon.m */,
+				E92C52D91965444800BADBA7 /* BTCellTableViewCell.h */,
+				E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */,
+			);
+			name = BTData;
+			sourceTree = "<group>";
+		};
 		E944B4E419645291008B6B23 = {
 			isa = PBXGroup;
 			children = (
+				E9FF3C1B19654A0300E2DE6A /* Settings */,
+				E92C52D519653ADC00BADBA7 /* BTData */,
 				E944B528196453FF008B6B23 /* ASIHTTPRequest */,
 				E944B53D196453FF008B6B23 /* JSON */,
 				E944B557196453FF008B6B23 /* MBProgressHUD */,
@@ -327,6 +357,17 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		E9FF3C1B19654A0300E2DE6A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E9FF3C1F19654AD800E2DE6A /* studentSettingsViewController.h */,
+				E9FF3C2019654AD800E2DE6A /* studentSettingsViewController.m */,
+				E9FF3C221965586A00E2DE6A /* SettingsViewController.h */,
+				E9FF3C231965586A00E2DE6A /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -426,11 +467,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E944B55E196453FF008B6B23 /* ASIDataCompressor.m in Sources */,
+				E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */,
 				E944B570196453FF008B6B23 /* SBJsonWriter.m in Sources */,
 				E944B56B196453FF008B6B23 /* SBJsonStreamWriter.m in Sources */,
 				E944B56E196453FF008B6B23 /* SBJsonTokeniser.m in Sources */,
 				E944B572196453FF008B6B23 /* Reachability.m in Sources */,
 				E944B56C196453FF008B6B23 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				E92C52D819653B9B00BADBA7 /* Beacon.m in Sources */,
 				E944B50A19645291008B6B23 /* ViewController.m in Sources */,
 				E944B562196453FF008B6B23 /* ASIHTTPRequest.m in Sources */,
 				E944B571196453FF008B6B23 /* MBProgressHUD.m in Sources */,
@@ -441,13 +484,16 @@
 				E944B56D196453FF008B6B23 /* SBJsonStreamWriterState.m in Sources */,
 				E944B561196453FF008B6B23 /* ASIFormDataRequest.m in Sources */,
 				E944B50119645291008B6B23 /* AppDelegate.m in Sources */,
+				E92C52D419653AD500BADBA7 /* BTViewControllerTableViewController.m in Sources */,
 				E944B563196453FF008B6B23 /* ASIInputStream.m in Sources */,
 				E944B4FD19645291008B6B23 /* main.m in Sources */,
 				E944B56F196453FF008B6B23 /* SBJsonUTF8Stream.m in Sources */,
+				E9FF3C2119654AD800E2DE6A /* studentSettingsViewController.m in Sources */,
 				E944B564196453FF008B6B23 /* ASINetworkQueue.m in Sources */,
 				E944B55F196453FF008B6B23 /* ASIDataDecompressor.m in Sources */,
 				E944B567196453FF008B6B23 /* SBJsonStreamParser.m in Sources */,
 				E944B565196453FF008B6B23 /* NSObject+SBJson.m in Sources */,
+				E9FF3C241965586B00E2DE6A /* SettingsViewController.m in Sources */,
 				E944B560196453FF008B6B23 /* ASIDownloadCache.m in Sources */,
 				E944B569196453FF008B6B23 /* SBJsonStreamParserAdapter.m in Sources */,
 			);
@@ -539,7 +585,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -572,7 +618,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -588,7 +634,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BT/BT-Prefix.pch";
 				INFOPLIST_FILE = "BT/BT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -602,7 +650,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BT/BT-Prefix.pch";
 				INFOPLIST_FILE = "BT/BT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -666,6 +716,7 @@
 				E944B52419645291008B6B23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E944B52519645291008B6B23 /* Build configuration list for PBXNativeTarget "BTTests" */ = {
 			isa = XCConfigurationList;
@@ -674,6 +725,7 @@
 				E944B52719645291008B6B23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
