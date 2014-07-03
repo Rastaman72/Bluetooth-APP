@@ -147,6 +147,7 @@
 		E944B5771964542B008B6B23 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E944B57919645433008B6B23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E944B57B19645437008B6B23 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		E9F3B998196592E60057B1C1 /* SERVICES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
 		E9FF3C1F19654AD800E2DE6A /* studentSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = studentSettingsViewController.h; path = Settings/studentSettingsViewController.h; sourceTree = "<group>"; };
 		E9FF3C2019654AD800E2DE6A /* studentSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = studentSettingsViewController.m; path = Settings/studentSettingsViewController.m; sourceTree = "<group>"; };
 		E9FF3C221965586A00E2DE6A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Settings/SettingsViewController.h; sourceTree = "<group>"; };
@@ -239,6 +240,7 @@
 		E944B4F619645291008B6B23 /* BT */ = {
 			isa = PBXGroup;
 			children = (
+				E9F3B998196592E60057B1C1 /* SERVICES.h */,
 				E944B4FF19645291008B6B23 /* AppDelegate.h */,
 				E944B50019645291008B6B23 /* AppDelegate.m */,
 				E944B50219645291008B6B23 /* Main_iPhone.storyboard */,
