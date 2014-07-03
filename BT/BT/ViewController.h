@@ -18,9 +18,10 @@
 @property (strong, nonatomic) IBOutlet UITextView *textview;
 @property (nonatomic,strong) CBCentralManager * centralManager;
 @property (nonatomic,strong) CBPeripheral * discoveredPeripheral;
+@property (nonatomic,strong) NSMutableData *data;
 @property (weak, nonatomic) IBOutlet UITextView *result;
 @property (weak, nonatomic) IBOutlet UITextField *request;
-@property (nonatomic,strong) NSMutableData *data;
+
 @property (nonatomic,assign)BOOL foundAulaB;
 @end
 

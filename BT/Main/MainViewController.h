@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.h
+//  MainViewController.h
 //  BT
 //
 //  Created by LGBS dev on 7/3/14.
@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import"studentSettingsViewController.h"
-@interface SettingsViewController : UIViewController
+
+@interface ProperViewSegue : UIStoryboardSegue
+@end
+@interface MainViewController : UIViewController
 
 @end

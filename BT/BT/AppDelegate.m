@@ -15,24 +15,24 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    _btBeacons=[[NSMutableArray alloc]initWithCapacity:10];
-    Beacon* bt1=[[Beacon alloc]init];
-    bt1.name=@"BT!";
-    bt1.Function=@"AulaB";
-    bt1.ID=1;
-    [_btBeacons addObject:bt1];
-    
-    Beacon* bt2=[[Beacon alloc]init];
-    bt2.name=@"BT2";
-    bt2.Function=@"AulaC";
-    bt2.ID=2;
-    [_btBeacons addObject:bt2];
-    
-    UITabBarController *tabContorller=(UITabBarController*)self.window.rootViewController;
-    UINavigationController *navigationController=[tabContorller viewControllers][0];
-    BTViewControllerTableViewController *btViewController=[navigationController viewControllers][0];
-    btViewController.btBeacon=_btBeacons;
+//    // Override point for customization after application launch.
+//    _btBeacons=[[NSMutableArray alloc]initWithCapacity:10];
+//    Beacon* bt1=[[Beacon alloc]init];
+//    bt1.name=@"BT!";
+//    bt1.Function=@"AulaB";
+//    bt1.ID=1;
+//    [_btBeacons addObject:bt1];
+//    
+//    Beacon* bt2=[[Beacon alloc]init];
+//    bt2.name=@"BT2";
+//    bt2.Function=@"AulaC";
+//    bt2.ID=2;
+//    [_btBeacons addObject:bt2];
+//    
+//    UITabBarController *tabContorller=(UITabBarController*)self.window.rootViewController;
+//    UINavigationController *navigationController=[tabContorller viewControllers][0];
+//    BTViewControllerTableViewController *btViewController=[navigationController viewControllers][0];
+//    btViewController.btBeacon=_btBeacons;
     return YES;
 }
 							

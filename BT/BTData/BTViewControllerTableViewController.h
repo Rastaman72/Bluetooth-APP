@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
 
-@interface BTViewControllerTableViewController : UITableViewController
+#import "SERVICES.h"
+
+@interface BTViewControllerTableViewController : UITableViewController<CBCentralManagerDelegate,CBPeripheralManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *btBeacon;
+@property (nonatomic,strong) CBCentralManager * centralManager;
+@property (nonatomic,strong) CBPeripheral * discoveredPeripheral;
+@property (nonatomic,strong) NSMutableData *data;
 @end
