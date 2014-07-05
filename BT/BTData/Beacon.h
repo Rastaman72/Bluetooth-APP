@@ -7,14 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ESTBeaconManager.h"
-#import "ESTBeaconRegion.h"
-@interface Beacon : NSObject<ESTBeaconManagerDelegate>
 
+@interface Beacon : NSObject
 
-@property (nonatomic, strong) NSMutableArray *btBeacon;
-
-@property (nonatomic,retain) ESTBeaconManager* beaconManager;
-@property (nonatomic,retain) ESTBeaconRegion* beaconRegion;
-@property (nonatomic,retain) ESTBeacon* beacon;
+@property(retain,nonatomic)NSString* name;
+@property(retain,nonatomic)NSString* function;
+@property(assign,nonatomic)int ID;
 @end

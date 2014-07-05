@@ -12,6 +12,7 @@
 		E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */; };
 		E9336E1D19680BD500FBE395 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9336E1C19680BD500FBE395 /* CoreLocation.framework */; };
 		E9336E2819680D4200FBE395 /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9336E2719680D4200FBE395 /* libEstimoteSDK.a */; };
+		E9336E2F19682D7200FBE395 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9336E2E19682D7200FBE395 /* InfoView.m */; };
 		E944B4F119645291008B6B23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F019645291008B6B23 /* Foundation.framework */; };
 		E944B4F319645291008B6B23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F219645291008B6B23 /* CoreGraphics.framework */; };
 		E944B4F519645291008B6B23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F419645291008B6B23 /* UIKit.framework */; };
@@ -87,6 +88,8 @@
 		E9336E2519680D4200FBE395 /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
 		E9336E2619680D4200FBE395 /* ESTBeaconVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconVO.h; sourceTree = "<group>"; };
 		E9336E2719680D4200FBE395 /* libEstimoteSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK.a; sourceTree = "<group>"; };
+		E9336E2D19682D7200FBE395 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoView.h; path = Info/InfoView.h; sourceTree = "<group>"; };
+		E9336E2E19682D7200FBE395 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoView.m; path = Info/InfoView.m; sourceTree = "<group>"; };
 		E944B4ED19645291008B6B23 /* BT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E944B4F019645291008B6B23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E944B4F219645291008B6B23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -241,9 +244,19 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
+		E9336E2919682BE900FBE395 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				E9336E2D19682D7200FBE395 /* InfoView.h */,
+				E9336E2E19682D7200FBE395 /* InfoView.m */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
 		E944B4E419645291008B6B23 = {
 			isa = PBXGroup;
 			children = (
+				E9336E2919682BE900FBE395 /* Info */,
 				E9336E1E19680D4200FBE395 /* EstimoteSDK */,
 				E9FE78161965A9BB0014BBE2 /* Access */,
 				E9FE78121965A8270014BBE2 /* Main */,
@@ -548,6 +561,7 @@
 				E944B55E196453FF008B6B23 /* ASIDataCompressor.m in Sources */,
 				E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */,
 				E944B570196453FF008B6B23 /* SBJsonWriter.m in Sources */,
+				E9336E2F19682D7200FBE395 /* InfoView.m in Sources */,
 				E944B56B196453FF008B6B23 /* SBJsonStreamWriter.m in Sources */,
 				E944B56E196453FF008B6B23 /* SBJsonTokeniser.m in Sources */,
 				E944B572196453FF008B6B23 /* Reachability.m in Sources */,

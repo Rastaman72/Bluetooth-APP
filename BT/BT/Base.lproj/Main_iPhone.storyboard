@@ -83,7 +83,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" tag="102" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xbo-iM-W9b">
-                                            <rect key="frame" x="171" y="29" width="116" height="18"/>
+                                            <rect key="frame" x="171" y="7" width="116" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Function" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qjm-rj-8MT">
@@ -92,10 +92,18 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eVG-b8-FQg">
+                                            <rect key="frame" x="200" y="27" width="67" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="distanceImageView" destination="xbo-iM-W9b" id="xBX-aI-XQl"/>
+                                    <outlet property="distanceLabel" destination="eVG-b8-FQg" id="wNC-ym-B6d"/>
                                     <outlet property="functionLabel" destination="qjm-rj-8MT" id="Fqc-aG-4ly"/>
                                     <outlet property="nameLabel" destination="Jpp-5x-8xd" id="Lx1-6p-51O"/>
                                     <segue destination="tj1-0O-H17" kind="push" id="QQA-ua-FkY"/>
@@ -111,7 +119,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezd-AB-r8s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1374" y="-327"/>
+            <point key="canvasLocation" x="1380" y="-319"/>
         </scene>
         <!--Settings Student View Controller - Student-->
         <scene sceneID="8GD-VO-qwc">
@@ -209,7 +217,7 @@
         <scene sceneID="UCO-Mj-zXO">
             <objects>
                 <viewController id="tj1-0O-H17" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UIg-G1-fvy">
+                    <view key="view" contentMode="scaleToFill" id="UIg-G1-fvy" customClass="InfoView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -227,9 +235,15 @@
                                 <state key="disabled">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="SQLPush:" destination="UIg-G1-fvy" eventType="touchUpInside" id="v99-Ie-7ge"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="SQLButton" destination="TX7-Xe-DRj" id="O2r-JM-Jva"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="wzS-96-Luk"/>
                 </viewController>

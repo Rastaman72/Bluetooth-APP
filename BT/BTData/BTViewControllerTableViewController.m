@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad
 {
+    
     //
     //    NSMutableArray* _btBeacons;
     //
@@ -51,9 +52,19 @@
     
     [super viewDidLoad];
     _data=[[NSMutableData alloc] init];
+    self.btBeacon =[[NSMutableArray alloc]init];
     
     
-   
+    
+    self.beaconManager = [[ESTBeaconManager alloc]init];
+    self.beaconManager.delegate=self;
+    self.beaconManager.avoidUnknownStateBeacons=YES;
+    
+    self.beaconRegion = [[ESTBeaconRegion alloc] initWithProximityUUID:self.beacon.proximityUUID
+                                                                 major:[self.beacon.major unsignedIntValue]
+                                                                 minor:[self.beacon.minor unsignedIntValue]
+                                                            identifier:@"RegionIdentifier"];
+    [self.beaconManager startRangingBeaconsInRegion:self.beaconRegion];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -80,7 +91,7 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return [self.btBeacon count];
 }
 
 
@@ -88,19 +99,17 @@
 {
     
     BTCellTableViewCell *cell=(BTCellTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"BTCell"];
+    ESTBeacon* beacon=(self.btBeacon)[indexPath.row];
     
+    NSString* name=[NSString stringWithFormat:@"%d",beacon.color];
+    NSString* function=[NSString stringWithFormat:@"%@",beacon.major];
+    NSString* distance=[NSString stringWithFormat:@"%@",beacon.distance];
     
-    //dopisać pobieranie z obiektu beacon zamiast zl sity
-    
-//    ESTBeacon* beacon=(self.btBeacon)[indexPath.row];
-//    
-//    NSString* name=[NSString stringWithFormat:@"%d",beacon.color];
-//    NSString* function=[NSString stringWithFormat:@"%@",beacon.major];
-//    
-//    cell.nameLabel.text=name;
-//    cell.functionLabel.text=function;
-//    cell.distanceImageView=nil;
- return cell;
+    cell.nameLabel.text=name;
+    cell.functionLabel.text=function;
+    cell.distanceLabel.text=distance;
+    cell.distanceImageView=nil;
+    return cell;
 }
 
 
@@ -112,6 +121,13 @@
 }
 
 
+- (void)beaconManager:(ESTBeaconManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(ESTBeaconRegion *)region
+{
+    self.btBeacon = beacons;
+    
+    [self.tableView reloadData];
+   
+}
 
 /*
  -(void)centralManagerDidUpdateState:(CBCentralManager *)central
