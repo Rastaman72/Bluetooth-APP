@@ -10,6 +10,8 @@
 		E92C52D419653AD500BADBA7 /* BTViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */; };
 		E92C52D819653B9B00BADBA7 /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D719653B9B00BADBA7 /* Beacon.m */; };
 		E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */; };
+		E9336E1D19680BD500FBE395 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9336E1C19680BD500FBE395 /* CoreLocation.framework */; };
+		E9336E2819680D4200FBE395 /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9336E2719680D4200FBE395 /* libEstimoteSDK.a */; };
 		E944B4F119645291008B6B23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F019645291008B6B23 /* Foundation.framework */; };
 		E944B4F319645291008B6B23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F219645291008B6B23 /* CoreGraphics.framework */; };
 		E944B4F519645291008B6B23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F419645291008B6B23 /* UIKit.framework */; };
@@ -76,6 +78,15 @@
 		E92C52D719653B9B00BADBA7 /* Beacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Beacon.m; path = BTData/Beacon.m; sourceTree = "<group>"; };
 		E92C52D91965444800BADBA7 /* BTCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCellTableViewCell.h; path = BTData/BTCellTableViewCell.h; sourceTree = "<group>"; };
 		E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCellTableViewCell.m; path = BTData/BTCellTableViewCell.m; sourceTree = "<group>"; };
+		E9336E1C19680BD500FBE395 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E9336E2019680D4200FBE395 /* ESTBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeacon.h; sourceTree = "<group>"; };
+		E9336E2119680D4200FBE395 /* ESTBeaconDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconDefinitions.h; sourceTree = "<group>"; };
+		E9336E2219680D4200FBE395 /* ESTBeaconFirmwareInfoVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconFirmwareInfoVO.h; sourceTree = "<group>"; };
+		E9336E2319680D4200FBE395 /* ESTBeaconFirmwareVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconFirmwareVO.h; sourceTree = "<group>"; };
+		E9336E2419680D4200FBE395 /* ESTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconManager.h; sourceTree = "<group>"; };
+		E9336E2519680D4200FBE395 /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
+		E9336E2619680D4200FBE395 /* ESTBeaconVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconVO.h; sourceTree = "<group>"; };
+		E9336E2719680D4200FBE395 /* libEstimoteSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK.a; sourceTree = "<group>"; };
 		E944B4ED19645291008B6B23 /* BT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E944B4F019645291008B6B23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E944B4F219645291008B6B23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -168,6 +179,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9336E2819680D4200FBE395 /* libEstimoteSDK.a in Frameworks */,
+				E9336E1D19680BD500FBE395 /* CoreLocation.framework in Frameworks */,
 				E944B57C19645437008B6B23 /* CoreBluetooth.framework in Frameworks */,
 				E944B57A19645433008B6B23 /* CFNetwork.framework in Frameworks */,
 				E944B5781964542B008B6B23 /* SystemConfiguration.framework in Frameworks */,
@@ -205,9 +218,33 @@
 			name = BTData;
 			sourceTree = "<group>";
 		};
+		E9336E1E19680D4200FBE395 /* EstimoteSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E9336E1F19680D4200FBE395 /* Headers */,
+				E9336E2719680D4200FBE395 /* libEstimoteSDK.a */,
+			);
+			path = EstimoteSDK;
+			sourceTree = "<group>";
+		};
+		E9336E1F19680D4200FBE395 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				E9336E2019680D4200FBE395 /* ESTBeacon.h */,
+				E9336E2119680D4200FBE395 /* ESTBeaconDefinitions.h */,
+				E9336E2219680D4200FBE395 /* ESTBeaconFirmwareInfoVO.h */,
+				E9336E2319680D4200FBE395 /* ESTBeaconFirmwareVO.h */,
+				E9336E2419680D4200FBE395 /* ESTBeaconManager.h */,
+				E9336E2519680D4200FBE395 /* ESTBeaconRegion.h */,
+				E9336E2619680D4200FBE395 /* ESTBeaconVO.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		E944B4E419645291008B6B23 = {
 			isa = PBXGroup;
 			children = (
+				E9336E1E19680D4200FBE395 /* EstimoteSDK */,
 				E9FE78161965A9BB0014BBE2 /* Access */,
 				E9FE78121965A8270014BBE2 /* Main */,
 				E9FF3C1B19654A0300E2DE6A /* Settings */,
@@ -235,6 +272,7 @@
 		E944B4EF19645291008B6B23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9336E1C19680BD500FBE395 /* CoreLocation.framework */,
 				E944B57B19645437008B6B23 /* CoreBluetooth.framework */,
 				E944B57919645433008B6B23 /* CFNetwork.framework */,
 				E944B5771964542B008B6B23 /* SystemConfiguration.framework */,
@@ -679,6 +717,10 @@
 				GCC_PREFIX_HEADER = "BT/BT-Prefix.pch";
 				INFOPLIST_FILE = "BT/BT-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EstimoteSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -695,6 +737,10 @@
 				GCC_PREFIX_HEADER = "BT/BT-Prefix.pch";
 				INFOPLIST_FILE = "BT/BT-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EstimoteSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
