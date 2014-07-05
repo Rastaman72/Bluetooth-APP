@@ -100,7 +100,7 @@
 //    cell.nameLabel.text=name;
 //    cell.functionLabel.text=function;
 //    cell.distanceImageView=nil;
-//    return cell;
+ return cell;
 }
 
 
