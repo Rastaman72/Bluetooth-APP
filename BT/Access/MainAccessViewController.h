@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Connection.h"
 
 @interface MainAccessViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *LoginButton;

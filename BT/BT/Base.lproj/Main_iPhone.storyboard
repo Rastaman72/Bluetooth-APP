@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G9H-mn-Mhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="-656"/>
+            <point key="canvasLocation" x="925" y="-639"/>
         </scene>
         <!--View Controller Table View Controller - Bluetooth Receiver-->
         <scene sceneID="nCx-og-NeT">
@@ -182,7 +182,7 @@
                                     <outlet property="distanceLabel" destination="eVG-b8-FQg" id="wNC-ym-B6d"/>
                                     <outlet property="functionLabel" destination="qjm-rj-8MT" id="Fqc-aG-4ly"/>
                                     <outlet property="nameLabel" destination="Jpp-5x-8xd" id="Lx1-6p-51O"/>
-                                    <segue destination="tj1-0O-H17" kind="push" id="dco-rY-mxw"/>
+                                    <segue destination="tj1-0O-H17" kind="push" identifier="ListToInfo" id="dco-rY-mxw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -276,14 +276,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="SaveChange:" destination="ums-sO-kYr" eventType="touchUpInside" id="Mf6-2M-azW"/>
+                                    <action selector="SaveSChange:" destination="ums-sO-kYr" eventType="touchUpInside" id="FE0-IB-IuB"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="SaveButton" destination="bYe-XR-M6o" id="xyz-pP-w2N"/>
-                        <outlet property="SaveChange" destination="UBE-RQ-dsL" id="76U-f0-dhA"/>
+                        <outlet property="SaveButton" destination="bYe-XR-M6o" id="lYV-UG-vbU"/>
                         <outlet property="department" destination="MTI-Yx-jje" id="Hdz-9w-vup"/>
                         <outlet property="spec" destination="M5j-ba-f7w" id="BNE-mp-vfh"/>
                         <outlet property="term" destination="Szd-6g-fW0" id="wgc-l8-XJl"/>
@@ -430,14 +429,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="SaveChange:" destination="i9o-FT-PwO" eventType="touchUpInside" id="uSD-JR-2o7"/>
+                                    <action selector="SaveChange:" destination="i9o-FT-PwO" eventType="touchUpInside" id="xhO-ce-C89"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="SaveButton" destination="P7z-Gi-rIH" id="iGd-XW-bTe"/>
-                        <outlet property="SaveChange" destination="P7z-Gi-rIH" id="Wd6-jr-YfW"/>
+                        <outlet property="SaveTButton" destination="uQd-pR-hx1" id="hSH-v7-CNf"/>
                         <outlet property="department" destination="0x0-am-PkP" id="anQ-iE-JLO"/>
                         <outlet property="subject" destination="3ZO-xD-Rvi" id="NYe-3d-hH2"/>
                         <segue destination="QEx-cC-cRz" kind="modal" identifier="TeacherToLogin" id="4EK-2d-gQk"/>
@@ -447,10 +445,10 @@
             </objects>
             <point key="canvasLocation" x="1906" y="770"/>
         </scene>
-        <!--View Controller-->
+        <!--Verify Teacher View Controller-->
         <scene sceneID="RMr-Oe-4fI">
             <objects>
-                <viewController id="QEx-cC-cRz" sceneMemberID="viewController">
+                <viewController id="QEx-cC-cRz" customClass="VerifyTeacherViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NWD-ny-2Eb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -473,10 +471,16 @@
                                 <state key="normal" title="Zatwierdź">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="Verify:" destination="QEx-cC-cRz" eventType="touchUpInside" id="KMn-3S-8di"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="VerifyButton" destination="uea-Cr-2yL" id="Ngk-NC-tmQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S92-vW-hzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

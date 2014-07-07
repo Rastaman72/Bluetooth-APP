@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Connection.h"
 @interface RegisterViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *CreateAccountButton;
 - (IBAction)CreateAccount:(id)sender;

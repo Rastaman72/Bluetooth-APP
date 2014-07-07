@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Connection.h"
 @interface SettingsTeacherViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *department;
@@ -18,7 +18,7 @@
 
 @property (retain,nonatomic) NSString* selectDepartment;
 @property (retain,nonatomic) NSString* selectSebject;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *SaveButton;
+@property (weak, nonatomic) IBOutlet UIButton *SaveTButton;
 - (IBAction)SaveChange:(id)sender;
 
 

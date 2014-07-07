@@ -11,6 +11,7 @@
 #import "SERVICES.h"
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
+#import "InfoFiewViewController.h"
 @interface BTViewControllerTableViewController : UITableViewController<ESTBeaconManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *btBeacon;

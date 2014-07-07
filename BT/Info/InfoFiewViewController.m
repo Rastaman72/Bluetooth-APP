@@ -40,10 +40,11 @@
 
 - (IBAction)SQLPush:(id)sender {
     NSString* code;
-    code=@"1";
+    code=_bluetoothID;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:@"GetData" forKey:@"TYPE"];
     [request setPostValue:code forKey:@"ID"];
     [request setDelegate:self];
     [request startAsynchronous];
@@ -52,7 +53,7 @@
     
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Redeeming code...";
+    hud.labelText = @"Fetching data";
     self.navigationItem.hidesBackButton = YES;
     // Hide keyword
     
@@ -72,18 +73,18 @@
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
         
-        
-        NSRange startRange = [responseString rangeOfString:@"Array{"];
-        NSRange endRange = [responseString rangeOfString:@"\"}"];
-        
-        NSRange searchRange = NSMakeRange(startRange.location+5 , endRange.location-startRange.location+-3 );
-        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-        
+//        
+//        NSRange startRange = [responseString rangeOfString:@"Array{"];
+//        NSRange endRange = [responseString rangeOfString:@"\"}"];
+//        
+//        NSRange searchRange = NSMakeRange(startRange.location+5 , endRange.location-startRange.location+-3 );
+//        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
+//        
         NSLog(@"%@",responseString);
-        NSLog(@"%@",forJSON);
-        
-        NSDictionary *responseDict = [forJSON JSONValue];
-        
+//        NSLog(@"%@",forJSON);
+//        
+//        NSDictionary *responseDict = [forJSON JSONValue];
+//        
         // _result.text = responseString;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;

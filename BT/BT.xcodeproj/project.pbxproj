@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E90FF872196AA14700D9F359 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF871196AA14700D9F359 /* RegisterViewController.m */; };
 		E90FF875196AA23400D9F359 /* InfoFiewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF874196AA23400D9F359 /* InfoFiewViewController.m */; };
+		E90FF879196AC81B00D9F359 /* VerifyTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF878196AC81B00D9F359 /* VerifyTeacherViewController.m */; };
 		E917FD381968A4B400096727 /* SettingsTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E917FD371968A4B400096727 /* SettingsTeacherViewController.m */; };
 		E92C52D419653AD500BADBA7 /* BTViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */; };
 		E92C52D819653B9B00BADBA7 /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D719653B9B00BADBA7 /* Beacon.m */; };
@@ -78,6 +79,9 @@
 		E90FF871196AA14700D9F359 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = Access/RegisterViewController.m; sourceTree = "<group>"; };
 		E90FF873196AA23400D9F359 /* InfoFiewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoFiewViewController.h; path = Info/InfoFiewViewController.h; sourceTree = "<group>"; };
 		E90FF874196AA23400D9F359 /* InfoFiewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoFiewViewController.m; path = Info/InfoFiewViewController.m; sourceTree = "<group>"; };
+		E90FF876196AC62C00D9F359 /* Connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
+		E90FF877196AC81B00D9F359 /* VerifyTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerifyTeacherViewController.h; path = Access/VerifyTeacherViewController.h; sourceTree = "<group>"; };
+		E90FF878196AC81B00D9F359 /* VerifyTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerifyTeacherViewController.m; path = Access/VerifyTeacherViewController.m; sourceTree = "<group>"; };
 		E917FD361968A4B400096727 /* SettingsTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTeacherViewController.h; path = Settings/SettingsTeacherViewController.h; sourceTree = "<group>"; };
 		E917FD371968A4B400096727 /* SettingsTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTeacherViewController.m; path = Settings/SettingsTeacherViewController.m; sourceTree = "<group>"; };
 		E92C52D219653AD500BADBA7 /* BTViewControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTViewControllerTableViewController.h; path = BTData/BTViewControllerTableViewController.h; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 				E944B50919645291008B6B23 /* ViewController.m */,
 				E944B50B19645291008B6B23 /* Images.xcassets */,
 				E944B4F719645291008B6B23 /* Supporting Files */,
+				E90FF876196AC62C00D9F359 /* Connection.h */,
 			);
 			path = BT;
 			sourceTree = "<group>";
@@ -449,6 +454,8 @@
 				E9FE78181965A9D60014BBE2 /* MainAccessViewController.m */,
 				E90FF870196AA14700D9F359 /* RegisterViewController.h */,
 				E90FF871196AA14700D9F359 /* RegisterViewController.m */,
+				E90FF877196AC81B00D9F359 /* VerifyTeacherViewController.h */,
+				E90FF878196AC81B00D9F359 /* VerifyTeacherViewController.m */,
 			);
 			name = Access;
 			sourceTree = "<group>";
@@ -603,6 +610,7 @@
 				E944B567196453FF008B6B23 /* SBJsonStreamParser.m in Sources */,
 				E944B565196453FF008B6B23 /* NSObject+SBJson.m in Sources */,
 				E9FF3C241965586B00E2DE6A /* SettingsViewController.m in Sources */,
+				E90FF879196AC81B00D9F359 /* VerifyTeacherViewController.m in Sources */,
 				E944B560196453FF008B6B23 /* ASIDownloadCache.m in Sources */,
 				E9FE781D1965B85C0014BBE2 /* SettingsStudentViewController.m in Sources */,
 				E944B569196453FF008B6B23 /* SBJsonStreamParserAdapter.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Connection.h"
 @interface SettingsStudentViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *spec;
 @property (weak, nonatomic) IBOutlet UIPickerView *department;
@@ -22,7 +22,8 @@
 @property (retain,nonatomic) NSString* selectYear;
 @property (retain,nonatomic) NSString* selectTerm;
 @property (retain,nonatomic) NSString* selectSpec;
-- (IBAction)SaveChange:(id)sender;
+- (IBAction)SaveSChange:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIButton *SaveButton;
 
 @end

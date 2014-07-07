@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ASIFormDataRequest.h"
-#import "SBJson.h"
-#import "MBProgressHUD.h"
+#import "Connection.h"
 @interface InfoFiewViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *SQLButton;
 - (IBAction)SQLPush:(id)sender;
+@property(nonatomic,retain) NSString* bluetoothID;
 @end

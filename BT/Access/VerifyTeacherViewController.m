@@ -1,18 +1,18 @@
 //
-//  RegisterViewController.m
+//  VerifyTeacherViewController.m
 //  BT
 //
 //  Created by LGBS dev on 7/7/14.
 //  Copyright (c) 2014 LGBS. All rights reserved.
 //
 
-#import "RegisterViewController.h"
+#import "VerifyTeacherViewController.h"
 
-@interface RegisterViewController ()
+@interface VerifyTeacherViewController ()
 
 @end
 
-@implementation RegisterViewController
+@implementation VerifyTeacherViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,20 +46,14 @@
 }
 */
 
-- (IBAction)CreateAccount:(id)sender {
-  
-    
+- (IBAction)Verify:(id)sender {
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    [request setPostValue:@"CreateS" forKey:@"TYPE"];
-    
-    //if na podstawie comboboxa
-    //[request setPostValue:@"CreateT" forKey:@"TYPE"];
-    
+    [request setPostValue:@"Verify" forKey:@"TYPE"];
     [request setDelegate:self];
     [request startAsynchronous];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Registering...";
+    hud.labelText = @"Veryfing...";
     self.navigationItem.hidesBackButton = YES;
     
 }
