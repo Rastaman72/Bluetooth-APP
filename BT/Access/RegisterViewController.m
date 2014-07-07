@@ -1,18 +1,18 @@
 //
-//  studentSettingsViewController.m
+//  RegisterViewController.m
 //  BT
 //
-//  Created by LGBS dev on 7/3/14.
+//  Created by LGBS dev on 7/7/14.
 //  Copyright (c) 2014 LGBS. All rights reserved.
 //
 
-#import "studentSettingsViewController.h"
+#import "RegisterViewController.h"
 
-@interface StudentSettingsViewController ()
+@interface RegisterViewController ()
 
 @end
 
-@implementation StudentSettingsViewController
+@implementation RegisterViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,10 +35,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)back:(id)sender
-{
-    [self.delegate studentSettingsViewControllerDidBack:self];
-}
 /*
 #pragma mark - Navigation
 
@@ -50,4 +46,6 @@
 }
 */
 
+- (IBAction)CreateAccount:(id)sender {
+}
 @end

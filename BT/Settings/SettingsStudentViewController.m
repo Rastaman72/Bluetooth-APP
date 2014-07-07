@@ -32,9 +32,12 @@
     
     self.termArray = [[NSArray alloc] initWithObjects:@"I",@"II",@"III",@"IV",@"V",@"VI",@"VII",@"VIII",@"IX",@"X" , nil];
     self.specArray = [[NSArray alloc] initWithObjects:@"gkio",@"bdisd",@"psi", nil];
-
     
-
+    
+    self.selectDepartment = [[NSString alloc]init];
+    self.selectYear = [[NSString alloc]init];
+    self.selectTerm = [[NSString alloc]init];
+    self.selectSpec = [[NSString alloc]init];
     // Do any additional setup after loading the view.
 }
 
@@ -96,6 +99,25 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     
+    if (pickerView==_department)
+    {
+        self.selectDepartment=[self.departmentArray objectAtIndex:row];
+    }
+    else if (pickerView==_year)
+    {
+        self.selectYear= [self.yearArray objectAtIndex:row];
+    }
+    else if (pickerView==_term)
+    {
+        self.selectTerm= [self.termArray objectAtIndex:row];
+    }
+    else if (pickerView==_spec)
+    {
+        self.selectSpec= [self.specArray objectAtIndex:row];
+    }
+
+    
+    
 }
 
 
@@ -110,4 +132,6 @@
 }
 */
 
+- (IBAction)SaveChange:(id)sender {
+}
 @end

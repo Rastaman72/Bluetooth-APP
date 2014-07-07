@@ -1,0 +1,15 @@
+//
+//  RegisterViewController.h
+//  BT
+//
+//  Created by LGBS dev on 7/7/14.
+//  Copyright (c) 2014 LGBS. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface RegisterViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *CreateAccountButton;
+- (IBAction)CreateAccount:(id)sender;
+
+@end

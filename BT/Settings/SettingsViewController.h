@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import"studentSettingsViewController.h"
+#import"SettingsStudentViewController.h"
 @interface SettingsViewController : UIViewController
 
 @end

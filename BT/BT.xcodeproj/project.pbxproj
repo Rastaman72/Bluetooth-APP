@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90FF872196AA14700D9F359 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF871196AA14700D9F359 /* RegisterViewController.m */; };
+		E90FF875196AA23400D9F359 /* InfoFiewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF874196AA23400D9F359 /* InfoFiewViewController.m */; };
+		E917FD381968A4B400096727 /* SettingsTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E917FD371968A4B400096727 /* SettingsTeacherViewController.m */; };
 		E92C52D419653AD500BADBA7 /* BTViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */; };
 		E92C52D819653B9B00BADBA7 /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D719653B9B00BADBA7 /* Beacon.m */; };
 		E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */; };
 		E9336E1D19680BD500FBE395 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9336E1C19680BD500FBE395 /* CoreLocation.framework */; };
 		E9336E2819680D4200FBE395 /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9336E2719680D4200FBE395 /* libEstimoteSDK.a */; };
-		E9336E2F19682D7200FBE395 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9336E2E19682D7200FBE395 /* InfoView.m */; };
 		E944B4F119645291008B6B23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F019645291008B6B23 /* Foundation.framework */; };
 		E944B4F319645291008B6B23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F219645291008B6B23 /* CoreGraphics.framework */; };
 		E944B4F519645291008B6B23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F419645291008B6B23 /* UIKit.framework */; };
@@ -58,7 +60,6 @@
 		E9FE78151965A8480014BBE2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE78141965A8480014BBE2 /* MainViewController.m */; };
 		E9FE78191965A9D60014BBE2 /* MainAccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE78181965A9D60014BBE2 /* MainAccessViewController.m */; };
 		E9FE781D1965B85C0014BBE2 /* SettingsStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE781C1965B85C0014BBE2 /* SettingsStudentViewController.m */; };
-		E9FF3C2119654AD800E2DE6A /* studentSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FF3C2019654AD800E2DE6A /* studentSettingsViewController.m */; };
 		E9FF3C241965586B00E2DE6A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FF3C231965586A00E2DE6A /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90FF870196AA14700D9F359 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = Access/RegisterViewController.h; sourceTree = "<group>"; };
+		E90FF871196AA14700D9F359 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = Access/RegisterViewController.m; sourceTree = "<group>"; };
+		E90FF873196AA23400D9F359 /* InfoFiewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoFiewViewController.h; path = Info/InfoFiewViewController.h; sourceTree = "<group>"; };
+		E90FF874196AA23400D9F359 /* InfoFiewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoFiewViewController.m; path = Info/InfoFiewViewController.m; sourceTree = "<group>"; };
+		E917FD361968A4B400096727 /* SettingsTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTeacherViewController.h; path = Settings/SettingsTeacherViewController.h; sourceTree = "<group>"; };
+		E917FD371968A4B400096727 /* SettingsTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTeacherViewController.m; path = Settings/SettingsTeacherViewController.m; sourceTree = "<group>"; };
 		E92C52D219653AD500BADBA7 /* BTViewControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTViewControllerTableViewController.h; path = BTData/BTViewControllerTableViewController.h; sourceTree = "<group>"; };
 		E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTViewControllerTableViewController.m; path = BTData/BTViewControllerTableViewController.m; sourceTree = "<group>"; };
 		E92C52D619653B9B00BADBA7 /* Beacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Beacon.h; path = BTData/Beacon.h; sourceTree = "<group>"; };
@@ -88,8 +95,6 @@
 		E9336E2519680D4200FBE395 /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
 		E9336E2619680D4200FBE395 /* ESTBeaconVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconVO.h; sourceTree = "<group>"; };
 		E9336E2719680D4200FBE395 /* libEstimoteSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK.a; sourceTree = "<group>"; };
-		E9336E2D19682D7200FBE395 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoView.h; path = Info/InfoView.h; sourceTree = "<group>"; };
-		E9336E2E19682D7200FBE395 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoView.m; path = Info/InfoView.m; sourceTree = "<group>"; };
 		E944B4ED19645291008B6B23 /* BT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E944B4F019645291008B6B23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E944B4F219645291008B6B23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -171,8 +176,6 @@
 		E9FE78181965A9D60014BBE2 /* MainAccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAccessViewController.m; path = Access/MainAccessViewController.m; sourceTree = "<group>"; };
 		E9FE781B1965B85C0014BBE2 /* SettingsStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsStudentViewController.h; path = Settings/SettingsStudentViewController.h; sourceTree = "<group>"; };
 		E9FE781C1965B85C0014BBE2 /* SettingsStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsStudentViewController.m; path = Settings/SettingsStudentViewController.m; sourceTree = "<group>"; };
-		E9FF3C1F19654AD800E2DE6A /* studentSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = studentSettingsViewController.h; path = Settings/studentSettingsViewController.h; sourceTree = "<group>"; };
-		E9FF3C2019654AD800E2DE6A /* studentSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = studentSettingsViewController.m; path = Settings/studentSettingsViewController.m; sourceTree = "<group>"; };
 		E9FF3C221965586A00E2DE6A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Settings/SettingsViewController.h; sourceTree = "<group>"; };
 		E9FF3C231965586A00E2DE6A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Settings/SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,6 +211,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E917FD321968A1DD00096727 /* Teacher */ = {
+			isa = PBXGroup;
+			children = (
+				E917FD361968A4B400096727 /* SettingsTeacherViewController.h */,
+				E917FD371968A4B400096727 /* SettingsTeacherViewController.m */,
+			);
+			name = Teacher;
+			sourceTree = "<group>";
+		};
 		E92C52D519653ADC00BADBA7 /* BTData */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,8 +259,8 @@
 		E9336E2919682BE900FBE395 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				E9336E2D19682D7200FBE395 /* InfoView.h */,
-				E9336E2E19682D7200FBE395 /* InfoView.m */,
+				E90FF873196AA23400D9F359 /* InfoFiewViewController.h */,
+				E90FF874196AA23400D9F359 /* InfoFiewViewController.m */,
 			);
 			name = Info;
 			sourceTree = "<group>";
@@ -435,6 +447,8 @@
 			children = (
 				E9FE78171965A9D60014BBE2 /* MainAccessViewController.h */,
 				E9FE78181965A9D60014BBE2 /* MainAccessViewController.m */,
+				E90FF870196AA14700D9F359 /* RegisterViewController.h */,
+				E90FF871196AA14700D9F359 /* RegisterViewController.m */,
 			);
 			name = Access;
 			sourceTree = "<group>";
@@ -451,9 +465,8 @@
 		E9FF3C1B19654A0300E2DE6A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E917FD321968A1DD00096727 /* Teacher */,
 				E9FE781A1965B8040014BBE2 /* Student */,
-				E9FF3C1F19654AD800E2DE6A /* studentSettingsViewController.h */,
-				E9FF3C2019654AD800E2DE6A /* studentSettingsViewController.m */,
 				E9FF3C221965586A00E2DE6A /* SettingsViewController.h */,
 				E9FF3C231965586A00E2DE6A /* SettingsViewController.m */,
 			);
@@ -561,7 +574,6 @@
 				E944B55E196453FF008B6B23 /* ASIDataCompressor.m in Sources */,
 				E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */,
 				E944B570196453FF008B6B23 /* SBJsonWriter.m in Sources */,
-				E9336E2F19682D7200FBE395 /* InfoView.m in Sources */,
 				E944B56B196453FF008B6B23 /* SBJsonStreamWriter.m in Sources */,
 				E944B56E196453FF008B6B23 /* SBJsonTokeniser.m in Sources */,
 				E944B572196453FF008B6B23 /* Reachability.m in Sources */,
@@ -575,6 +587,7 @@
 				E944B56A196453FF008B6B23 /* SBJsonStreamParserState.m in Sources */,
 				E944B566196453FF008B6B23 /* SBJsonParser.m in Sources */,
 				E944B568196453FF008B6B23 /* SBJsonStreamParserAccumulator.m in Sources */,
+				E90FF875196AA23400D9F359 /* InfoFiewViewController.m in Sources */,
 				E944B56D196453FF008B6B23 /* SBJsonStreamWriterState.m in Sources */,
 				E944B561196453FF008B6B23 /* ASIFormDataRequest.m in Sources */,
 				E944B50119645291008B6B23 /* AppDelegate.m in Sources */,
@@ -582,7 +595,8 @@
 				E944B563196453FF008B6B23 /* ASIInputStream.m in Sources */,
 				E944B4FD19645291008B6B23 /* main.m in Sources */,
 				E944B56F196453FF008B6B23 /* SBJsonUTF8Stream.m in Sources */,
-				E9FF3C2119654AD800E2DE6A /* studentSettingsViewController.m in Sources */,
+				E917FD381968A4B400096727 /* SettingsTeacherViewController.m in Sources */,
+				E90FF872196AA14700D9F359 /* RegisterViewController.m in Sources */,
 				E9FE78151965A8480014BBE2 /* MainViewController.m in Sources */,
 				E944B564196453FF008B6B23 /* ASINetworkQueue.m in Sources */,
 				E944B55F196453FF008B6B23 /* ASIDataDecompressor.m in Sources */,
