@@ -64,6 +64,8 @@
                     <navigationItem key="navigationItem" title="BT App" id="ctQ-YF-hn9"/>
                     <connections>
                         <outlet property="LoginButton" destination="zrG-Xa-Brx" id="bQ3-Zx-VdA"/>
+                        <outlet property="loginField" destination="Tom-qW-iig" id="Lvn-jv-a5h"/>
+                        <outlet property="passwordFIeld" destination="TFU-dh-4fW" id="wtD-2d-MOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoQ-4T-XVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -98,7 +100,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="hpq-TR-rtc">
-                                <rect key="frame" x="148" y="244" width="97" height="30"/>
+                                <rect key="frame" x="148" y="248" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -130,6 +132,9 @@
                     </view>
                     <connections>
                         <outlet property="CreateAccountButton" destination="okX-Kq-q16" id="pn6-Ml-wH6"/>
+                        <outlet property="loginField" destination="B7w-g8-Axw" id="8MA-xY-45u"/>
+                        <outlet property="passwordField" destination="hpq-TR-rtc" id="lec-h0-H58"/>
+                        <outlet property="repeatPasswordField" destination="YQh-Ac-CX6" id="iAS-Ro-GLu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G9H-mn-Mhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -519,7 +524,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oeq-ba-rgQ"/>
                     <connections>
-                        <segue destination="qNx-fX-gBy" kind="custom" identifier="MainToLogin" customClass="ProperViewSegue" id="Ewk-Vc-0s7"/>
+                        <segue destination="qNx-fX-gBy" kind="modal" identifier="MainToLogin" customClass="ProperViewSegue" id="Ewk-Vc-0s7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4h-tJ-Ycy" userLabel="First Responder" sceneMemberID="firstResponder"/>

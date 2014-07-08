@@ -91,10 +91,12 @@
         // _result.text = responseString;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
+        [self dismissViewControllerAnimated:YES completion:nil];
+     
+
         
     } else {
-        //_result.text = @"Unexpected error";
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+               [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
         
     }

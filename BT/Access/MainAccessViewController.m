@@ -29,6 +29,8 @@
 
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.navigationBar.hidden = YES;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,18 +52,15 @@
 
 - (IBAction)LoginPush:(id)sender {
 
- [self.navigationController popViewControllerAnimated:YES];
-       NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
+
+    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"Login" forKey:@"TYPE"];
-    
+    [request setPostValue:self.loginField.text forKey:@"Login"];
+    [request setPostValue:self.passwordFIeld.text forKey:@"Password"];
     [request setDelegate:self];
     [request startAsynchronous];
-    
-    
-    
-    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Login...";
     self.navigationItem.hidesBackButton = YES;
@@ -75,29 +74,69 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+    	
+    NSString *responseString = [request responseString];
+    NSLog(@"%@",responseString);
+     NSLog(@"%d",request.responseStatusCode);
     
-    if (request.responseStatusCode == 400) {
-        // _result.text = @"Invalid code";
-    } else if (request.responseStatusCode == 403) {
-        //  _result.text = @"Code already used";
-    } else if (request.responseStatusCode == 200) {
+    if (request.responseStatusCode == 400)
+    {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:@"User not found"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        errorAlert.show;
+        return;
+        
+    }
+    else if (request.responseStatusCode == 410)
+    {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"You put bad password"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        errorAlert.show;
+        
+    }
+    else if (request.responseStatusCode == 403)
+    {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"Unknown error"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        errorAlert.show;
+        
+        
+    }
+    else if (request.responseStatusCode == 200)
+    {
         NSString *responseString = [request responseString];
         
-//        
-//        NSRange startRange = [responseString rangeOfString:@"Array{"];
-//        NSRange endRange = [responseString rangeOfString:@"\"}"];
-//        
-//        NSRange searchRange = NSMakeRange(startRange.location+5 , endRange.location-startRange.location+-3 );
-//        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-//        
+        
+                NSRange startRange = [responseString rangeOfString:@"Array[{"];
+               NSRange endRange = [responseString rangeOfString:@"\"}]"];
+        
+               NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
+               NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
+        
         NSLog(@"%@",responseString);
-//        NSLog(@"%@",forJSON);
-//        
-//        NSDictionary *responseDict = [forJSON JSONValue];
-//        
-        // _result.text = responseString;
+               NSLog(@"%@",forJSON);
+        
+               NSDictionary *responseDict = [forJSON JSONValue];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.navigationItem.hidesBackButton = NO;
+        
+        
+       // [self.navigationController popToRootViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
+       // [self.navigationController popToRootViewControllerAnimated:YES];
+    
+
         
     } else {
         //_result.text = @"Unexpected error";
@@ -105,7 +144,7 @@
         self.navigationItem.hidesBackButton = NO;
         
     }
-    
+   
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
@@ -113,6 +152,13 @@
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:[error localizedDescription]
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    errorAlert.show;
+
     // _result.text = error.localizedDescription;
 
 }

@@ -11,5 +11,8 @@
 @interface RegisterViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *CreateAccountButton;
 - (IBAction)CreateAccount:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *loginField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
+@property (weak, nonatomic) IBOutlet UITextField *repeatPasswordField;
 @end

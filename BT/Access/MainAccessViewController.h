@@ -12,5 +12,7 @@
 @interface MainAccessViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *LoginButton;
 - (IBAction)LoginPush:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *loginField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordFIeld;
 
 @end

@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad
 {
-     //[self performSegueWithIdentifier:@"MainToLogin" sender:self];
+    [self performSegueWithIdentifier:@"MainToLogin" sender:self];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

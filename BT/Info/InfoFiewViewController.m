@@ -40,7 +40,8 @@
 
 - (IBAction)SQLPush:(id)sender {
     NSString* code;
-    code=_bluetoothID;
+   code=_bluetoothID;
+    
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
