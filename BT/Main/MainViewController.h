@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainAccessViewController.h"
+#import "BTViewControllerTableViewController.h"
+#import "SettingsViewController.h"
 
 @interface ProperViewSegue : UIStoryboardSegue
 @end
-@interface MainViewController : UIViewController
-
+@interface MainViewController : UIViewController <LoginDelegate>
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logOutButton;
+@property(nonatomic,retain)NSDictionary* user;
 @end

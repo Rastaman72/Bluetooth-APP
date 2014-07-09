@@ -35,13 +35,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)loginSucced:(NSDictionary *)dictForMain
+{
+    _user=dictForMain;
+}
 
 /*
  -(void)studentSettingsViewControllerDidBack:(StudentSettingsViewController *)controller
@@ -50,25 +53,30 @@
  }
  
  
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- if ([segue.identifier isEqualToString:@"BackToMain"]) {
- 
- UINavigationController *navigationController = segue.destinationViewController;
- StudentSettingsViewController *studentSettingsViewController = [navigationController viewControllers][0];
- studentSettingsViewController.delegate = self;
- }
- }*/
+*/
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"MainToLogin"]) {
+         MainAccessViewController *MAVC = (MainAccessViewController *)segue.destinationViewController;
+         MAVC.loginDelegate = self;
+         }
+    
+    
+    if ([segue.identifier isEqualToString:@"MainToBTList"]) {
+        BTViewControllerTableViewController *BTVCTVC = (BTViewControllerTableViewController *)segue.destinationViewController;
+        BTVCTVC.user = _user;
+    }
+    
+    if ([segue.identifier isEqualToString:@"MainToSettings"]) {
+        SettingsViewController *SVC = (SettingsViewController*)segue.destinationViewController;
+        SVC.userData = _user;
+    }
+    
 }
-*/
+
 
 @end

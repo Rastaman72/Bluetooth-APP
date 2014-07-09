@@ -12,4 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *SQLButton;
 - (IBAction)SQLPush:(id)sender;
 @property(nonatomic,retain) NSString* bluetoothID;
+@property (nonatomic,retain)NSDictionary* user;
 @end

@@ -19,11 +19,12 @@
 @property (retain, nonatomic)NSArray *specArray;
 
 @property (retain,nonatomic) NSString* selectDepartment;
-@property (retain,nonatomic) NSString* selectYear;
-@property (retain,nonatomic) NSString* selectTerm;
+@property (assign,nonatomic) int selectYear;
+@property (assign,nonatomic) int selectTerm;
 @property (retain,nonatomic) NSString* selectSpec;
 - (IBAction)SaveSChange:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *SaveButton;
+@property (nonatomic,retain)NSDictionary* student;
 
 @end

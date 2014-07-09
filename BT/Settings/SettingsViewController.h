@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import"SettingsStudentViewController.h"
+#import "SettingsStudentViewController.h"
+#import "SettingsTeacherViewController.h"
 @interface SettingsViewController : UIViewController
-
+@property(nonatomic,retain)NSDictionary* userData;
 @end

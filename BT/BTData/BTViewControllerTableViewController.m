@@ -29,27 +29,6 @@
 
 - (void)viewDidLoad
 {
-    
-    //
-    //    NSMutableArray* _btBeacons;
-    //
-    //    _btBeacons=[[NSMutableArray alloc]initWithCapacity:10];
-    //    Beacon* bt1=[[Beacon alloc]init];
-    //    bt1.name=@"BT!";
-    //    bt1.Function=@"AulaB";
-    //    bt1.ID=1;
-    //    [_btBeacons addObject:bt1];
-    //
-    //    Beacon* bt2=[[Beacon alloc]init];
-    //    bt2.name=@"BT2";
-    //    bt2.Function=@"AulaC";
-    //    bt2.ID=2;
-    //    [_btBeacons addObject:bt2];
-    //
-    //
-    //    self.btBeacon=_btBeacons;
-    
-    
     [super viewDidLoad];
     _data=[[NSMutableData alloc] init];
     self.btBeacon =[[NSMutableArray alloc]init];
@@ -65,12 +44,6 @@
                                                                  minor:[self.beacon.minor unsignedIntValue]
                                                             identifier:@"RegionIdentifier"];
     [self.beaconManager startRangingBeaconsInRegion:self.beaconRegion];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-        
     
 }
 
@@ -84,14 +57,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
     return [self.btBeacon count];
 }
@@ -181,6 +154,7 @@
      if([segue.identifier isEqualToString:@"ListToInfo"]){
          InfoFiewViewController *controller = (InfoFiewViewController *)segue.destinationViewController;
          controller.bluetoothID = [[sender nameLabel]text];
+         controller.user=_user;
      }
  }
 

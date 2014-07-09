@@ -18,6 +18,7 @@
 @property (nonatomic,strong) CBCentralManager * centralManager;
 @property (nonatomic,strong) CBPeripheral * discoveredPeripheral;
 @property (nonatomic,strong) NSMutableData *data;
+@property  (nonatomic,retain) NSDictionary* user;
 @property (nonatomic,retain) ESTBeaconManager* beaconManager;
 @property (nonatomic,retain) ESTBeaconRegion* beaconRegion;
 @property (nonatomic,retain) ESTBeacon* beacon;

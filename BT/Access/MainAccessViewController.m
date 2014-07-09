@@ -14,6 +14,8 @@
 
 @implementation MainAccessViewController
 
+@synthesize loginDelegate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,6 +32,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = YES;
+    _loginField.text=@"u2";
+    _passwordFIeld.text=@"y";
 
 }
 
@@ -39,16 +43,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark - Navigation
 
 - (IBAction)LoginPush:(id)sender {
 
@@ -128,19 +124,20 @@
         NSLog(@"%@",responseString);
                NSLog(@"%@",forJSON);
         
-               NSDictionary *responseDict = [forJSON JSONValue];
+               _responseDict = [forJSON JSONValue];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        
-       // [self.navigationController popToRootViewControllerAnimated:YES];
+                    if([self.loginDelegate respondsToSelector:@selector(loginSucced:)])
+        {
+            [self.loginDelegate loginSucced:_responseDict];
+          
+        }
         [self dismissViewControllerAnimated:YES completion:nil];
-       // [self.navigationController popToRootViewControllerAnimated:YES];
+      
     
 
         
     } else {
-        //_result.text = @"Unexpected error";
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+               [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
         
     }

@@ -27,6 +27,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.departmentArray = [[NSArray alloc] initWithObjects:@"EIM",@"ZMITAC",@"INF",@"GK", nil];
+    self.subjectArray = [[NSArray alloc] initWithObjects:@"test1",@"test2",@"test3",@"test4",@"test5" , nil];
+    
+    self.selectDepartment = [[NSString alloc]init];
+    self.selectSubject = [[NSString alloc]init];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +51,7 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
     if (pickerView==_department) {
-        return 6;
+        return 4;
     }
     else if (pickerView==_subject)
     {
@@ -79,7 +85,7 @@
     }
     else if (pickerView==_subject)
     {
-        self.selectSebject= [self.subjectArray objectAtIndex:row];
+        self.selectSubject= [self.subjectArray objectAtIndex:row];
         
         
     }
@@ -103,7 +109,9 @@
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"UpdateT" forKey:@"TYPE"];
-    
+    [request setPostValue:_selectDepartment forKey:@"Department"];
+    [request setPostValue:_selectSubject forKey:@"Subject"];
+    [request setPostValue:[_teacher valueForKey:@"Login"] forKey:@"Login"];
     
     [request setDelegate:self];
     [request startAsynchronous];
@@ -125,18 +133,9 @@
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
         
-        
-//        NSRange startRange = [responseString rangeOfString:@"Array{"];
-//        NSRange endRange = [responseString rangeOfString:@"\"}"];
-//        
-//        NSRange searchRange = NSMakeRange(startRange.location+5 , endRange.location-startRange.location+-3 );
-//        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-//        
+ 
         NSLog(@"%@",responseString);
-//        NSLog(@"%@",forJSON);
-//        
-//        NSDictionary *responseDict = [forJSON JSONValue];
-//        
+
         // _result.text = responseString;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
@@ -155,6 +154,14 @@
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:[error localizedDescription]
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    errorAlert.show;
+    
     // _result.text = error.localizedDescription;
+    
 }
 @end

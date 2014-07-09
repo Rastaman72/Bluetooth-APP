@@ -37,15 +37,24 @@
 
 
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     if ([segue.identifier isEqualToString:@"SettingsToStudent"]) {
+         SettingsStudentViewController *SSVC = (SettingsStudentViewController *)segue.destinationViewController;
+         SSVC.student = _userData;
+     }
+     
+     
+     if ([segue.identifier isEqualToString:@"SettingsToTeacher"]) {
+         SettingsTeacherViewController *STVC = (SettingsTeacherViewController *)segue.destinationViewController;
+         STVC.teacher = _userData;
+     }
+
  }
- */
+ 
 
 @end

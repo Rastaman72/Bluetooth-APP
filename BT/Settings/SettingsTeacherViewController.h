@@ -17,9 +17,10 @@
 @property (retain, nonatomic)NSArray *subjectArray;
 
 @property (retain,nonatomic) NSString* selectDepartment;
-@property (retain,nonatomic) NSString* selectSebject;
+@property (retain,nonatomic) NSString* selectSubject;
 @property (weak, nonatomic) IBOutlet UIButton *SaveTButton;
 - (IBAction)SaveChange:(id)sender;
+@property (nonatomic,retain)NSDictionary* teacher;
 
 
 @end

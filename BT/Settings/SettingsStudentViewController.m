@@ -35,9 +35,7 @@
     
     
     self.selectDepartment = [[NSString alloc]init];
-    self.selectYear = [[NSString alloc]init];
-    self.selectTerm = [[NSString alloc]init];
-    self.selectSpec = [[NSString alloc]init];
+        self.selectSpec = [[NSString alloc]init];
     // Do any additional setup after loading the view.
 }
 
@@ -105,11 +103,65 @@
     }
     else if (pickerView==_year)
     {
-        self.selectYear= [self.yearArray objectAtIndex:row];
+        switch (row) {
+            case 0:
+                self.selectYear=1;
+                break;
+            case 1:
+                self.selectYear=2;
+                break;
+            case 2:
+                self.selectYear=3;
+                break;
+            case 3:
+                self.selectYear=4;
+                break;
+            case 4:
+                self.selectYear=5;
+                break;
+            default:
+                break;
+        }
+        
+        
     }
     else if (pickerView==_term)
     {
-        self.selectTerm= [self.termArray objectAtIndex:row];
+        switch (row) {
+            case 0:
+                self.selectTerm=1;
+                break;
+            case 1:
+                self.selectTerm=2;
+                break;
+            case 2:
+                self.selectTerm=3;
+                break;
+            case 3:
+                self.selectTerm=4;
+                break;
+            case 4:
+                self.selectTerm=5;
+                break;
+            case 5:
+                self.selectTerm=6;
+                break;
+            case 6:
+                self.selectTerm=7;
+                break;
+            case 7:
+                self.selectTerm=8;
+                break;
+            case 8:
+                self.selectTerm=9;
+                break;
+            case 9:
+                self.selectTerm=10;
+                break;
+            default:
+                break;
+        }
+
     }
     else if (pickerView==_spec)
     {
@@ -134,6 +186,31 @@
 
 
 
+
+- (IBAction)SaveSChange:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    NSNumber* year=[[NSNumber alloc]initWithInt:_selectYear];
+    NSNumber* term=[[NSNumber alloc]initWithInt:_selectTerm];
+    
+    [request setPostValue:@"UpdateS" forKey:@"TYPE"];
+       [request setPostValue:_selectDepartment forKey:@"Department"];
+       [request setPostValue:year forKey:@"Year"];
+       [request setPostValue:term forKey:@"Term"];
+       [request setPostValue:_selectSpec forKey:@"Spec"];
+    [request setPostValue:[_student valueForKey:@"Login"] forKey:@"Login"];
+    
+    [request setDelegate:self];
+    [request startAsynchronous];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Updating...";
+    self.navigationItem.hidesBackButton = YES;
+    
+}
+
+
+
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     
@@ -144,19 +221,8 @@
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
         
-        
-//        NSRange startRange = [responseString rangeOfString:@"Array{"];
-//        NSRange endRange = [responseString rangeOfString:@"\"}"];
-//        
-//        NSRange searchRange = NSMakeRange(startRange.location+5 , endRange.location-startRange.location+-3 );
-//        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-//        
         NSLog(@"%@",responseString);
-//        NSLog(@"%@",forJSON);
-//        
-//        NSDictionary *responseDict = [forJSON JSONValue];
-//        
-        // _result.text = responseString;
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
         
@@ -174,18 +240,15 @@
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:[error localizedDescription]
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    errorAlert.show;
+    
     // _result.text = error.localizedDescription;
-}
-- (IBAction)SaveSChange:(id)sender {
-    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    [request setPostValue:@"UpdateS" forKey:@"TYPE"];
-    
-    [request setDelegate:self];
-    [request startAsynchronous];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Registering...";
-    self.navigationItem.hidesBackButton = YES;
     
 }
+
 @end
