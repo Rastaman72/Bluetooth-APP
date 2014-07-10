@@ -14,6 +14,7 @@
 
 @implementation SettingsStudentViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -213,23 +214,33 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    
     if (request.responseStatusCode == 400) {
         // _result.text = @"Invalid code";
     } else if (request.responseStatusCode == 403) {
         //  _result.text = @"Code already used";
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
+        NSRange startRange = [responseString rangeOfString:@"Array[{"];
+        NSRange endRange = [responseString rangeOfString:@"\"}]"];
+        NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
+        
+        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
         
         NSLog(@"%@",responseString);
+        NSLog(@"%@",forJSON);
         
+        _student = [forJSON JSONValue];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.navigationItem.hidesBackButton = NO;
         
+        
+        [[self navigationController]popToRootViewControllerAnimated:YES];
+                
     } else {
         //_result.text = @"Unexpected error";
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.navigationItem.hidesBackButton = NO;
+        self.navigationItem.hidesBackButton = NO;	
+       
+
         
     }
     

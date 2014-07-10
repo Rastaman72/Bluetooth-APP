@@ -136,6 +136,11 @@
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
-    // _result.text = error.localizedDescription;
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:[error localizedDescription]
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    errorAlert.show;
 }
 @end

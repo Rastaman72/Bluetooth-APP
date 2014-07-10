@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoQ-4T-XVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="488" y="-639"/>
+            <point key="canvasLocation" x="452" y="-599"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="Cwq-Ew-coN">
@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G9H-mn-Mhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="925" y="-639"/>
+            <point key="canvasLocation" x="905" y="-607"/>
         </scene>
         <!--View Controller Table View Controller - Bluetooth Receiver-->
         <scene sceneID="nCx-og-NeT">
@@ -373,7 +373,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ums-sO-kYr" kind="push" identifier="SettingsToStudent" id="eBD-Zl-XJf"/>
+                                    <segue destination="ums-sO-kYr" kind="push" identifier="SettingsToStudent" id="EQe-RS-twt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qcY-QG-u9c">
@@ -383,7 +383,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="i9o-FT-PwO" kind="push" identifier="SettingsToTeacher" id="pPt-en-A6b"/>
+                                    <segue destination="i9o-FT-PwO" kind="push" identifier="SettingsToTeacher" id="dHq-GQ-3Vz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -397,7 +397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAa-wg-5lP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="502"/>
+            <point key="canvasLocation" x="1364" y="392"/>
         </scene>
         <!--Settings Teacher View Controller - Prowadzący-->
         <scene sceneID="x7i-SK-G0I">
@@ -522,7 +522,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="QOh-fm-Psz" kind="push" identifier="MainToSettings" id="nde-m3-aqX"/>
+                                    <segue destination="QOh-fm-Psz" kind="push" identifier="MainToSettings" id="NeU-pD-Hq8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GXg-e8-NJe">
@@ -538,13 +538,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="oeq-ba-rgQ">
                         <barButtonItem key="leftBarButtonItem" title="Log out" id="yf9-nU-AuY">
                             <connections>
-                                <segue destination="qNx-fX-gBy" kind="modal" identifier="LogOut" id="wOH-HW-1WV"/>
+                                <action selector="logOut:" destination="rBu-7O-fHN" id="8Lx-hb-pAK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="logOutButton" destination="yf9-nU-AuY" id="4Lw-sa-O7D"/>
                         <segue destination="qNx-fX-gBy" kind="modal" identifier="MainToLogin" customClass="ProperViewSegue" id="Ewk-Vc-0s7"/>
@@ -552,7 +554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4h-tJ-Ycy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="156"/>
+            <point key="canvasLocation" x="143" y="266"/>
         </scene>
         <!--Navigation Controller - MainEntry-->
         <scene sceneID="pte-io-7JA">
@@ -570,7 +572,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eod-7W-EaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="323" y="122"/>
+            <point key="canvasLocation" x="-264" y="266"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -578,7 +580,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Ewk-Vc-0s7"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -27,13 +27,12 @@
 
 - (void)viewDidLoad
 {
-    
-
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = YES;
-    _loginField.text=@"u2";
-    _passwordFIeld.text=@"y";
+    _loginField.text=@"dupa";
+    _passwordFIeld.text=@"dupa";
+    
 
 }
 
@@ -42,6 +41,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 
 #pragma mark - Navigation
@@ -113,20 +114,21 @@
     else if (request.responseStatusCode == 200)
     {
         NSString *responseString = [request responseString];
+        NSRange startRange = [responseString rangeOfString:@"Array[{"];
+        NSRange endRange = [responseString rangeOfString:@"\"}]"];
+        NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
         
-        
-                NSRange startRange = [responseString rangeOfString:@"Array[{"];
-               NSRange endRange = [responseString rangeOfString:@"\"}]"];
-        
-               NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
-               NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
+        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
         
         NSLog(@"%@",responseString);
                NSLog(@"%@",forJSON);
         
                _responseDict = [forJSON JSONValue];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-                    if([self.loginDelegate respondsToSelector:@selector(loginSucced:)])
+        
+        
+        
+        if([self.loginDelegate respondsToSelector:@selector(loginSucced:)])
         {
             [self.loginDelegate loginSucced:_responseDict];
           

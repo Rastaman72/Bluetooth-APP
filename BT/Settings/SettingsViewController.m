@@ -25,8 +25,14 @@
 
 - (void)viewDidLoad
 {
+//    if([[_userData valueForKey:@"Role"]isEqualToString:@"Student"])
+//        [self performSegueWithIdentifier:@"SettingsToStudent" sender:self];
+//    else
+//        [self performSegueWithIdentifier:@"SettingsToTeacher" sender:self];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +52,7 @@
      if ([segue.identifier isEqualToString:@"SettingsToStudent"]) {
          SettingsStudentViewController *SSVC = (SettingsStudentViewController *)segue.destinationViewController;
          SSVC.student = _userData;
-     }
+        }
      
      
      if ([segue.identifier isEqualToString:@"SettingsToTeacher"]) {

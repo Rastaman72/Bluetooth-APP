@@ -10,6 +10,7 @@
 #import"SettingsStudentViewController.h"
 #import "SettingsStudentViewController.h"
 #import "SettingsTeacherViewController.h"
-@interface SettingsViewController : UIViewController
+#import "MainViewController.h"
+@interface SettingsViewController : UIViewController<LoginDelegate>
 @property(nonatomic,retain)NSDictionary* userData;
 @end

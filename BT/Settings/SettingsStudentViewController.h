@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Connection.h"
+
 @interface SettingsStudentViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIPickerView *spec;
 @property (weak, nonatomic) IBOutlet UIPickerView *department;
 @property (weak, nonatomic) IBOutlet UIPickerView *year;

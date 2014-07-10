@@ -11,9 +11,9 @@
 #import "BTViewControllerTableViewController.h"
 #import "SettingsViewController.h"
 
-@interface ProperViewSegue : UIStoryboardSegue
-@end
-@interface MainViewController : UIViewController <LoginDelegate>
+@interface MainViewController : UIViewController <UIAlertViewDelegate,LoginDelegate>
+- (IBAction)logOut:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logOutButton;
 @property(nonatomic,retain)NSDictionary* user;
+@property(nonatomic,assign)bool updateData;
 @end

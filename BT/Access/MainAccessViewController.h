@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Connection.h"
-//#import "MainViewController.h"
 
 
 @protocol LoginDelegate <NSObject>
