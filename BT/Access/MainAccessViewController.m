@@ -49,7 +49,8 @@
 
 - (IBAction)LoginPush:(id)sender {
 
-
+if(![_loginField.text isEqualToString:@""] && ![_passwordFIeld.text isEqualToString:@""])
+{
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -61,7 +62,16 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Login...";
     self.navigationItem.hidesBackButton = YES;
-    // Hide keyword
+}
+else{
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:@"Field (login,password) cannot be empty"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    errorAlert.show;
+
+}// Hide keyword
     
     // Clear text field
     

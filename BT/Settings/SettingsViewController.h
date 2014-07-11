@@ -11,6 +11,8 @@
 #import "SettingsStudentViewController.h"
 #import "SettingsTeacherViewController.h"
 #import "MainViewController.h"
-@interface SettingsViewController : UIViewController<LoginDelegate>
+@interface SettingsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *teacherButton;
 @property(nonatomic,retain)NSDictionary* userData;
+@property (weak, nonatomic) IBOutlet UIButton *studentButton;
 @end

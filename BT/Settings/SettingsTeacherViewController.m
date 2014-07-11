@@ -33,6 +33,10 @@
     self.selectDepartment = [[NSString alloc]init];
     self.selectSubject = [[NSString alloc]init];
 
+    [self performSegueWithIdentifier:@"TeacherToLogin" sender:self];
+
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,7 +98,7 @@
     
 }
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -102,8 +106,14 @@
  {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+     /*
+     
+     if ([segue.identifier isEqualToString:@"TeacherToLogin"]) {
+         VerifyTeacherViewController.h *MAVC = (MainAccessViewController *)segue.destinationViewController;
+         MAVC.loginDelegate = self;
+     }*/
  }
- */
+
 
 - (IBAction)SaveChange:(id)sender {
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
@@ -139,6 +149,8 @@
         // _result.text = responseString;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
+        [[self navigationController]popToRootViewControllerAnimated:YES];
+
         
     } else {
         //_result.text = @"Unexpected error";

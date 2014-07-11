@@ -25,10 +25,10 @@
 
 - (void)viewDidLoad
 {
-//    if([[_userData valueForKey:@"Role"]isEqualToString:@"Student"])
-//        [self performSegueWithIdentifier:@"SettingsToStudent" sender:self];
-//    else
-//        [self performSegueWithIdentifier:@"SettingsToTeacher" sender:self];
+    if([[_userData valueForKey:@"Role"]isEqualToString:@"Student"])
+        _teacherButton.enabled=false;
+    else
+        _studentButton.enabled=false;
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -54,11 +54,12 @@
          SSVC.student = _userData;
         }
      
-     
      if ([segue.identifier isEqualToString:@"SettingsToTeacher"]) {
          SettingsTeacherViewController *STVC = (SettingsTeacherViewController *)segue.destinationViewController;
          STVC.teacher = _userData;
+     
      }
+     
 
  }
  

@@ -367,7 +367,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="45L-Cn-ylE">
-                                <rect key="frame" x="94" y="145" width="54" height="30"/>
+                                <rect key="frame" x="133" y="175" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Student">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -392,7 +392,8 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="jn4-Nb-FQk"/>
                     <navigationItem key="navigationItem" id="grw-cB-KXo"/>
                     <connections>
-                        <outlet property="view" destination="45L-Cn-ylE" id="qj6-4q-F9v"/>
+                        <outlet property="studentButton" destination="45L-Cn-ylE" id="xCJ-aV-pcx"/>
+                        <outlet property="teacherButton" destination="qcY-QG-u9c" id="SUZ-yH-3Qc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAa-wg-5lP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -501,6 +502,7 @@
                     </view>
                     <connections>
                         <outlet property="VerifyButton" destination="uea-Cr-2yL" id="Ngk-NC-tmQ"/>
+                        <outlet property="VerifyField" destination="UjD-a6-fmb" id="902-Bw-tDr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S92-vW-hzh" userLabel="First Responder" sceneMemberID="firstResponder"/>

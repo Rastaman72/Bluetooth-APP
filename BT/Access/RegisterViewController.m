@@ -71,6 +71,8 @@
 
 - (IBAction)CreateAccount:(id)sender {
     
+    if([_passwordField.text isEqualToString:_repeatPasswordField.text])
+    {
     
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -89,7 +91,17 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Registering...";
     self.navigationItem.hidesBackButton = YES;
-    
+    }
+    else
+    {
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"You put diffrent password in repeat password field"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        errorAlert.show;
+     
+    }
 }
 
 

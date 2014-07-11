@@ -50,6 +50,7 @@
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"Verify" forKey:@"TYPE"];
+    [request setPostValue:_VerifyField.text forKey:@"Password"];
     [request setDelegate:self];
     [request startAsynchronous];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -65,26 +66,28 @@
     
     if (request.responseStatusCode == 400) {
         // _result.text = @"Invalid code";
-    } else if (request.responseStatusCode == 403) {
-        //  _result.text = @"Code already used";
-    } else if (request.responseStatusCode == 200) {
+    }
+    else if (request.responseStatusCode == 410)
+    {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"You put bad password"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        errorAlert.show;
+    }
+    else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
         
-//        
-//        NSRange startRange = [responseString rangeOfString:@"Array{"];
-//        NSRange endRange = [responseString rangeOfString:@"\"}"];
-//        
-//        NSRange searchRange = NSMakeRange(startRange.location+5 , endRange.location-startRange.location+-3 );
-//        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-//        
+        
         NSLog(@"%@",responseString);
-//        NSLog(@"%@",forJSON);
-//        
-//        NSDictionary *responseDict = [forJSON JSONValue];
-//        
-        // _result.text = responseString;
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
         
     } else {
         //_result.text = @"Unexpected error";
@@ -100,6 +103,12 @@
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
-    // _result.text = error.localizedDescription;
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:[error localizedDescription]
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    errorAlert.show;
+
 }
 @end

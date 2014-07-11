@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Connection.h"
+#import "VerifyTeacherViewController.h"
 @interface SettingsTeacherViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *department;
