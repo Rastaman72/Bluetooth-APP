@@ -26,7 +26,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.accountTypeArray = [[NSArray alloc] initWithObjects:@"Student",@"Wykładowca" , nil];
+    
+    
+   
+    
+    //self.accountTypeArray = [[NSArray alloc] initWithObjects:@"Student",@"Wykładowca" , nil];
     self.selectAccountType = [[NSString alloc]init];
     self.selectAccountType=[self.accountTypeArray objectAtIndex:0];
 
@@ -154,5 +158,8 @@
                                                cancelButtonTitle:@"OK"
                                                otherButtonTitles:nil];
     errorAlert.show;
+}
+- (IBAction)backPush:(id)sender {
+   [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

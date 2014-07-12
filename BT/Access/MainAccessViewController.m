@@ -124,16 +124,11 @@ else{
     else if (request.responseStatusCode == 200)
     {
         NSString *responseString = [request responseString];
-        NSRange startRange = [responseString rangeOfString:@"Array[{"];
-        NSRange endRange = [responseString rangeOfString:@"\"}]"];
-        NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
-        
-        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-        
-        NSLog(@"%@",responseString);
-               NSLog(@"%@",forJSON);
-        
-               _responseDict = [forJSON JSONValue];
+               NSLog(@"%@",responseString);
+        NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+        NSError* error;
+        _responseDict=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+        //_responseDict = [responseString JSONValue];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         
@@ -148,7 +143,40 @@ else{
     
 
         
-    } else {
+    }
+     else if (request.responseStatusCode == 201)
+    {
+        NSString *responseString = [request responseString];
+        
+        
+        self.accountTypeArray = [[NSMutableArray alloc]init];
+        
+        NSArray *listItems = [responseString componentsSeparatedByString:@","];
+        NSMutableDictionary  * tempDict = [[NSMutableDictionary alloc]init];
+        NSError* error;
+        for(NSString* key in listItems)
+        {
+            NSData* data = [key dataUsingEncoding:NSUTF8StringEncoding];
+            
+#warning IOS PONIZEJ 7 DO SPRAWDZENIA
+#warning nsjson moze sie wywalic
+#warning WAZNE
+            [tempDict setDictionary:[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error]];
+            
+            
+            [self.accountTypeArray addObject:tempDict[[[tempDict allKeys] objectAtIndex:0]] ];
+        }
+        //  responseDict=[forJSON JSONValue];
+        
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        [self performSegueWithIdentifier:@"LoginToRegister" sender:self];
+
+        
+        
+    }
+    else {
                [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
         
@@ -172,4 +200,22 @@ else{
 
 }
 
+- (IBAction)registerPush:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:@"loadAccountType" forKey:@"TYPE"];
+    
+    [request setDelegate:self];
+    [request startAsynchronous];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Geting data...";
+    self.navigationItem.hidesBackButton = YES;
+
+  }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    RegisterViewController *RVC = (RegisterViewController *)segue.destinationViewController;
+    RVC.accountTypeArray = _accountTypeArray;
+}
 @end

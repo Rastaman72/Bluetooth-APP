@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Connection.h"
-
+#import "RegisterViewController.h"
 
 @protocol LoginDelegate <NSObject>
 -(void) loginSucced:(NSDictionary *)dataForMainView;
@@ -20,11 +20,13 @@
 }
 
 @property (nonatomic, weak) id<LoginDelegate> loginDelegate;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+- (IBAction)registerPush:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *LoginButton;
 - (IBAction)LoginPush:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *loginField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordFIeld;
 @property (nonatomic,retain) NSDictionary *responseDict ;
-
+@property(nonatomic,retain)NSMutableArray*accountTypeArray;
 @end

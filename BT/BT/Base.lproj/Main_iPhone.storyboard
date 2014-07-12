@@ -55,7 +55,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4bG-54-AcJ" kind="modal" id="1dr-L1-S34"/>
+                                    <action selector="registerPush:" destination="qNx-fX-gBy" eventType="touchUpInside" id="0Wj-qA-67h"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -66,6 +66,8 @@
                         <outlet property="LoginButton" destination="zrG-Xa-Brx" id="bQ3-Zx-VdA"/>
                         <outlet property="loginField" destination="Tom-qW-iig" id="Lvn-jv-a5h"/>
                         <outlet property="passwordFIeld" destination="TFU-dh-4fW" id="wtD-2d-MOz"/>
+                        <outlet property="registerButton" destination="tbl-9E-NIh" id="USh-Jt-tdL"/>
+                        <segue destination="4bG-54-AcJ" kind="modal" identifier="LoginToRegister" id="Gxh-g7-ow7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoQ-4T-XVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,12 +144,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dpw-Oa-2Dt">
+                                <rect key="frame" x="26" y="43" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPush:" destination="4bG-54-AcJ" eventType="touchUpInside" id="QXO-ik-9Yv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="CreateAccountButton" destination="okX-Kq-q16" id="pn6-Ml-wH6"/>
                         <outlet property="accountType" destination="547-L7-cms" id="RT6-zL-ths"/>
+                        <outlet property="backButton" destination="dpw-Oa-2Dt" id="bjv-q9-IrO"/>
                         <outlet property="loginField" destination="B7w-g8-Axw" id="8MA-xY-45u"/>
                         <outlet property="passwordField" destination="hpq-TR-rtc" id="lec-h0-H58"/>
                         <outlet property="repeatPasswordField" destination="YQh-Ac-CX6" id="iAS-Ro-GLu"/>
@@ -373,7 +386,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ums-sO-kYr" kind="push" identifier="SettingsToStudent" id="EQe-RS-twt"/>
+                                    <action selector="studentPush:" destination="QOh-fm-Psz" eventType="touchUpInside" id="um4-jt-bcD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qcY-QG-u9c">
@@ -383,7 +396,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="i9o-FT-PwO" kind="push" identifier="SettingsToTeacher" id="dHq-GQ-3Vz"/>
+                                    <action selector="teacherPush:" destination="QOh-fm-Psz" eventType="touchUpInside" id="aFx-VB-9La"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -392,8 +405,9 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="jn4-Nb-FQk"/>
                     <navigationItem key="navigationItem" id="grw-cB-KXo"/>
                     <connections>
-                        <outlet property="studentButton" destination="45L-Cn-ylE" id="xCJ-aV-pcx"/>
                         <outlet property="teacherButton" destination="qcY-QG-u9c" id="SUZ-yH-3Qc"/>
+                        <segue destination="i9o-FT-PwO" kind="push" identifier="SettingsToTeacher" id="Zwp-H1-2qT"/>
+                        <segue destination="ums-sO-kYr" kind="push" identifier="SettingsToStudent" id="jZz-e1-tJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAa-wg-5lP" userLabel="First Responder" sceneMemberID="firstResponder"/>

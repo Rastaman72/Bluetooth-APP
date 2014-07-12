@@ -16,7 +16,11 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *accountType;
 @property (retain, nonatomic)NSArray *accountTypeArray;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+
+- (IBAction)backPush:(id)sender;
 
 @property (retain,nonatomic) NSString* selectAccountType;
 @property (weak, nonatomic) IBOutlet UITextField *repeatPasswordField;
+
 @end

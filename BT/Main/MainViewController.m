@@ -8,11 +8,6 @@
 
 #import "MainViewController.h"
 
-/*@implementation ProperViewSegue
-- (void)perform {
-    [((UIViewController *)self.sourceViewController).navigationController setViewControllers:@[self.destinationViewController]];
-}
-@end*/
 
 @interface MainViewController ()
 
@@ -34,9 +29,9 @@
     
     if (buttonIndex == 0)
     {
-               [self performSegueWithIdentifier:@"MainToSettings" sender:self];
+        [self performSegueWithIdentifier:@"MainToSettings" sender:self];
         _updateData=YES;
-//put button action which you want.
+        
     }
 }
 
@@ -49,7 +44,9 @@
     }
     else
     {
-        if([[_user valueForKey:@"Department"]isEqualToString:@""])
+        if (_user)
+        {
+        if([[[_user valueForKey:@"Department"] description]rangeOfString:@""].location != NSNotFound)
         {
             
             UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -60,6 +57,8 @@
             errorAlert.show;
           
         }
+        }
+        
     }
     
 }
@@ -88,16 +87,16 @@
         //  _result.text = @"Code already used";
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
-        NSRange startRange = [responseString rangeOfString:@"Array[{"];
-        NSRange endRange = [responseString rangeOfString:@"\"}]"];
-        NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
-        
-        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-        
+//        NSRange startRange = [responseString rangeOfString:@"Array[{"];
+//        NSRange endRange = [responseString rangeOfString:@"\"}]"];
+//        NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
+//        
+//        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
+//        
         NSLog(@"%@",responseString);
-        NSLog(@"%@",forJSON);
+       
         
-        _user = [forJSON JSONValue];
+        _user = [responseString JSONValue];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
     } else {
@@ -141,7 +140,7 @@
 - (void)loginSucced:(NSDictionary *)dictForMain
 {
     _user=dictForMain;
-   
+       
 }
 
 
@@ -175,8 +174,7 @@
     
     if ([segue.identifier isEqualToString:@"MainToSettings"]) {
         SettingsViewController *SVC = (SettingsViewController*)segue.destinationViewController;
-        SVC.userData = _user;
-        
+        SVC.userData = _user;        
     }
     
 }
