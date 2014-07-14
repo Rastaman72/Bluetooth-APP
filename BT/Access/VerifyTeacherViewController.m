@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _VerifyField.text=@"Test1";
     // Do any additional setup after loading the view.
 }
 

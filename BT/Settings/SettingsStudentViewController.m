@@ -28,12 +28,12 @@
 {
     
     [super viewDidLoad];
-    self.departmentArray = [[NSArray alloc] initWithObjects:@"AEII",@"Green",@"Orange",@"Purple",@"Red",@"Yellow" , nil];
+  /*  self.departmentArray = [[NSArray alloc] initWithObjects:@"AEII",@"Green",@"Orange",@"Purple",@"Red",@"Yellow" , nil];
     self.yearArray = [[NSArray alloc] initWithObjects:@"I",@"II",@"III",@"IV",@"V" , nil];
     
     self.termArray = [[NSArray alloc] initWithObjects:@"I",@"II",@"III",@"IV",@"V",@"VI",@"VII",@"VIII",@"IX",@"X" , nil];
     self.specArray = [[NSArray alloc] initWithObjects:@"gkio",@"bdisd",@"psi", nil];
-    
+    */
     
     self.selectDepartment = [[NSString alloc]init];
         self.selectSpec = [[NSString alloc]init];
@@ -55,19 +55,19 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
     if (pickerView==_department) {
-         return 6;
+         return [_departmentArray count];
     }
     else if (pickerView==_year)
     {
-         return 5;
+         return [_yearArray count];
     }
     else if (pickerView==_term)
     {
-        return 10;
+        return [_termArray count];
     }
     else if (pickerView==_spec)
     {
-        return 3;
+        return [_specArray count];
     }
     return 0;
    
@@ -80,10 +80,14 @@
     }
     else if (pickerView==_year)
     {
-        return [self.yearArray objectAtIndex:row];    }
+        return [[self.yearArray objectAtIndex:row]description];
+
+    }
     else if (pickerView==_term)
     {
-       return [self.termArray objectAtIndex:row];
+    
+        return [[self.termArray objectAtIndex:row]description];
+
     }
     else if (pickerView==_spec)
     {
@@ -104,7 +108,8 @@
     }
     else if (pickerView==_year)
     {
-        switch (row) {
+        self.selectYear=[[self.yearArray objectAtIndex:row]integerValue];
+       /* switch (row) {
             case 0:
                 self.selectYear=1;
                 break;
@@ -122,13 +127,13 @@
                 break;
             default:
                 break;
-        }
+        }*/
         
         
     }
     else if (pickerView==_term)
     {
-        switch (row) {
+        /*switch (row) {
             case 0:
                 self.selectTerm=1;
                 break;
@@ -161,7 +166,8 @@
                 break;
             default:
                 break;
-        }
+        }*/
+         self.selectTerm=[[self.termArray objectAtIndex:row]integerValue];
 
     }
     else if (pickerView==_spec)
@@ -189,18 +195,29 @@
 
 
 - (IBAction)SaveSChange:(id)sender {
+    
+#warning SYFFFFF
+#warning SYFFFFF
+#warning SYFFFFF
+    NSString* test =[[NSString alloc]initWithString:[[_student valueForKey:@"Login"]description]];
+    test = [test stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
+    test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
+    test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     NSNumber* year=[[NSNumber alloc]initWithInt:_selectYear];
     NSNumber* term=[[NSNumber alloc]initWithInt:_selectTerm];
     
     [request setPostValue:@"UpdateS" forKey:@"TYPE"];
+    //[request setPostValue:[_student valueForKey:@"Login"] forKey:@"Login"];
+    [request setPostValue:test forKey:@"Login"];
+
        [request setPostValue:_selectDepartment forKey:@"Department"];
        [request setPostValue:year forKey:@"Year"];
        [request setPostValue:term forKey:@"Term"];
        [request setPostValue:_selectSpec forKey:@"Spec"];
-    [request setPostValue:[_student valueForKey:@"Login"] forKey:@"Login"];
-    
     [request setDelegate:self];
     [request startAsynchronous];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

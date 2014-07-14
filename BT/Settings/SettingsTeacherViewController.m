@@ -27,8 +27,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.departmentArray = [[NSArray alloc] initWithObjects:@"EIM",@"ZMITAC",@"INF",@"GK", nil];
-    self.subjectArray = [[NSArray alloc] initWithObjects:@"test1",@"test2",@"test3",@"test4",@"test5" , nil];
+//    self.departmentArray = [[NSArray alloc] initWithObjects:@"EIM",@"ZMITAC",@"INF",@"GK", nil];
+//    self.subjectArray = [[NSArray alloc] initWithObjects:@"test1",@"test2",@"test3",@"test4",@"test5" , nil];
     
     self.selectDepartment = [[NSString alloc]init];
     self.selectSubject = [[NSString alloc]init];
@@ -55,12 +55,12 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
     if (pickerView==_department) {
-        return 4;
+        return [_departmentArray count];
+
     }
     else if (pickerView==_subject)
     {
-        return 5;
-    }
+       return [_subjectArray count];    }
     return 0;
     
 }
@@ -116,12 +116,22 @@
 
 
 - (IBAction)SaveChange:(id)sender {
+#warning SYFFFFF
+#warning SYFFFFF
+#warning SYFFFFF
+    NSString* test =[[NSString alloc]initWithString:[[_teacher valueForKey:@"Login"]description]];
+    test = [test stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
+    test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
+    test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"UpdateT" forKey:@"TYPE"];
     [request setPostValue:_selectDepartment forKey:@"Department"];
     [request setPostValue:_selectSubject forKey:@"Subject"];
-    [request setPostValue:[_teacher valueForKey:@"Login"] forKey:@"Login"];
+   // [request setPostValue:[[_teacher valueForKey:@"Login"]description ] forKey:@"Login"];
+    [request setPostValue:test forKey:@"Login"];
+
     
     [request setDelegate:self];
     [request startAsynchronous];

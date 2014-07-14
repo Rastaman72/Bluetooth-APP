@@ -30,8 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = YES;
-    _loginField.text=@"dupa";
-    _passwordFIeld.text=@"dupa";
+    _loginField.text=@"tr";
+    _passwordFIeld.text=@"tr";
     
 
 }
@@ -128,8 +128,7 @@ else{
         NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
         NSError* error;
         _responseDict=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
-        //_responseDict = [responseString JSONValue];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+               [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         
         
@@ -147,8 +146,9 @@ else{
      else if (request.responseStatusCode == 201)
     {
         NSString *responseString = [request responseString];
-        
-        
+        responseString= [responseString stringByReplacingOccurrencesOfString:@"[" withString:@""];
+        responseString= [responseString stringByReplacingOccurrencesOfString:@"]" withString:@""];
+
         self.accountTypeArray = [[NSMutableArray alloc]init];
         
         NSArray *listItems = [responseString componentsSeparatedByString:@","];

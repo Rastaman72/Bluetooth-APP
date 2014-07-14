@@ -27,6 +27,7 @@
 - (IBAction)LoginPush:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *loginField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordFIeld;
-@property (nonatomic,retain) NSDictionary *responseDict ;
+@property (nonatomic,retain) NSDictionary *responseDict;
+@property (nonatomic,retain) NSDictionary *responseDict1;
 @property(nonatomic,retain)NSMutableArray*accountTypeArray;
 @end

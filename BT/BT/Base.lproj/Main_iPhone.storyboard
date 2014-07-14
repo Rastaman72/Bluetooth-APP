@@ -405,6 +405,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="jn4-Nb-FQk"/>
                     <navigationItem key="navigationItem" id="grw-cB-KXo"/>
                     <connections>
+                        <outlet property="studentButton" destination="45L-Cn-ylE" id="wCX-rM-mun"/>
                         <outlet property="teacherButton" destination="qcY-QG-u9c" id="SUZ-yH-3Qc"/>
                         <segue destination="i9o-FT-PwO" kind="push" identifier="SettingsToTeacher" id="Zwp-H1-2qT"/>
                         <segue destination="ums-sO-kYr" kind="push" identifier="SettingsToStudent" id="jZz-e1-tJk"/>
