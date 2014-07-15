@@ -7,7 +7,7 @@
 //
 
 #import "InfoFiewViewController.h"
-
+#import <AdSupport/ASIdentifierManager.h>
 @interface InfoFiewViewController ()
 
 @end
@@ -41,12 +41,19 @@
 - (IBAction)SQLPush:(id)sender {
     NSString* code;
    code=_bluetoothID;
-    
+
+   // NSString* UUID=[[NSString alloc]initWithString:[[NSUUID UUID]UUIDString ]];
+  NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    [request setPostValue:@"GetData" forKey:@"TYPE"];
-    [request setPostValue:code forKey:@"ID"];
+    [request setPostValue:@"deviceInfo" forKey:@"TYPE"];
+    [request setPostValue:code forKey:@"UUID"];
+    [request setPostValue:code forKey:@"gpsH"];
+    [request setPostValue:code forKey:@"gpsW"];
+    [request setPostValue:code forKey:@"time"];
+    [request setPostValue:code forKey:@"place"];
+ 
     [request setDelegate:self];
     [request startAsynchronous];
     

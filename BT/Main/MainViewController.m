@@ -75,9 +75,14 @@
 {
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
+    NSString* test =[[NSString alloc]initWithString:[[_user valueForKey:@"Login"]description]];
+    test = [test stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
+    test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
+    test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"getNewDataS" forKey:@"TYPE"];
-    [request setPostValue:[_user valueForKey:@"Login"] forKey:@"Login"];
+    [request setPostValue:test forKey:@"Login"];
     [request setDelegate:self];
     [request startAsynchronous];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -90,7 +95,9 @@
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     if (request.responseStatusCode == 400) {
-        // _result.text = @"Invalid code";
+        NSString *responseString = [request responseString];
+        NSLog(@"%@",responseString);
+
     } else if (request.responseStatusCode == 403) {
         //  _result.text = @"Code already used";
     } else if (request.responseStatusCode == 200) {
@@ -99,7 +106,7 @@
          NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
         NSError*error;
         _user=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
-        _user = [responseString JSONValue];
+       
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
     } else {

@@ -232,21 +232,28 @@
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     if (request.responseStatusCode == 400) {
-        // _result.text = @"Invalid code";
+        NSString *responseString = [request responseString];
+        NSLog(@"%@",responseString);
+
     } else if (request.responseStatusCode == 403) {
         //  _result.text = @"Code already used";
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
-        NSRange startRange = [responseString rangeOfString:@"Array[{"];
-        NSRange endRange = [responseString rangeOfString:@"\"}]"];
-        NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
-        
-        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-        
+//        NSRange startRange = [responseString rangeOfString:@"Array[{"];
+//        NSRange endRange = [responseString rangeOfString:@"\"}]"];
+//        NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
+//        
+//        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
+//        
+//        NSLog(@"%@",responseString);
+//        NSLog(@"%@",forJSON);
+//        
+//        _student = [forJSON JSONValue];
         NSLog(@"%@",responseString);
-        NSLog(@"%@",forJSON);
-        
-        _student = [forJSON JSONValue];
+        NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+        NSError*error;
+        _student=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         

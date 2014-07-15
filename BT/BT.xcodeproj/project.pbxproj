@@ -16,6 +16,7 @@
 		E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */; };
 		E9336E1D19680BD500FBE395 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9336E1C19680BD500FBE395 /* CoreLocation.framework */; };
 		E9336E2819680D4200FBE395 /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9336E2719680D4200FBE395 /* libEstimoteSDK.a */; };
+		E9383AD51975CF0200DE5689 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9383AD41975CF0200DE5689 /* AdSupport.framework */; };
 		E944B4F119645291008B6B23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F019645291008B6B23 /* Foundation.framework */; };
 		E944B4F319645291008B6B23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F219645291008B6B23 /* CoreGraphics.framework */; };
 		E944B4F519645291008B6B23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B4F419645291008B6B23 /* UIKit.framework */; };
@@ -99,6 +100,7 @@
 		E9336E2519680D4200FBE395 /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
 		E9336E2619680D4200FBE395 /* ESTBeaconVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconVO.h; sourceTree = "<group>"; };
 		E9336E2719680D4200FBE395 /* libEstimoteSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK.a; sourceTree = "<group>"; };
+		E9383AD41975CF0200DE5689 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		E944B4ED19645291008B6B23 /* BT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E944B4F019645291008B6B23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E944B4F219645291008B6B23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -189,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9383AD51975CF0200DE5689 /* AdSupport.framework in Frameworks */,
 				E9336E2819680D4200FBE395 /* libEstimoteSDK.a in Frameworks */,
 				E9336E1D19680BD500FBE395 /* CoreLocation.framework in Frameworks */,
 				E944B57C19645437008B6B23 /* CoreBluetooth.framework in Frameworks */,
@@ -301,6 +304,7 @@
 		E944B4EF19645291008B6B23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9383AD41975CF0200DE5689 /* AdSupport.framework */,
 				E9336E1C19680BD500FBE395 /* CoreLocation.framework */,
 				E944B57B19645437008B6B23 /* CoreBluetooth.framework */,
 				E944B57919645433008B6B23 /* CFNetwork.framework */,

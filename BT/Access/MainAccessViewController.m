@@ -102,7 +102,7 @@ else{
     {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                             message:@"You put bad password"
+                                                             message:responseString
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles:nil];
