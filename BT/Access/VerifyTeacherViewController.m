@@ -51,7 +51,7 @@
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"Verify" forKey:@"TYPE"];
-    [request setPostValue:_VerifyField.text forKey:@"Password"];
+    [request setPostValue:_VerifyField.text forKey:@"TPassword"];
     [request setDelegate:self];
     [request startAsynchronous];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

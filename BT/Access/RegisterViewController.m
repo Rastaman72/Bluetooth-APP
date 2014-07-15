@@ -26,14 +26,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-   
-    
-    //self.accountTypeArray = [[NSArray alloc] initWithObjects:@"Student",@"Wykładowca" , nil];
     self.selectAccountType = [[NSString alloc]init];
     self.selectAccountType=[self.accountTypeArray objectAtIndex:0];
-
+    _loginField.delegate=self;
+ 
     // Do any additional setup after loading the view.
 }
 
@@ -48,7 +44,7 @@
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
-    return 2;
+    return [_accountTypeArray count];
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
@@ -62,39 +58,28 @@
     self.selectAccountType=[self.accountTypeArray objectAtIndex:row];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
-- (IBAction)CreateAccount:(id)sender {
-    
+- (void)sendRequest {
     if([_passwordField.text isEqualToString:_repeatPasswordField.text])
     {
-    
-    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    
-    if([_selectAccountType  isEqual: @"Student"])
-        [request setPostValue:@"CreateS" forKey:@"TYPE"];
-    
-    else
-        [request setPostValue:@"CreateT" forKey:@"TYPE"];
-    
-    [request setPostValue:_loginField.text forKey:@"Login"];
-    [request setPostValue:_passwordField.text forKey:@"Password"];
-
-    [request setDelegate:self];
-    [request startAsynchronous];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Registering...";
-    self.navigationItem.hidesBackButton = YES;
+        
+        NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        
+        if([_selectAccountType  isEqual: @"Student"])
+            [request setPostValue:@"CreateS" forKey:@"TYPE"];
+        
+        else
+            [request setPostValue:@"CreateT" forKey:@"TYPE"];
+        
+        [request setPostValue:_loginField.text forKey:@"Login"];
+        [request setPostValue:_passwordField.text forKey:@"Password"];
+        [request setPostValue:_tPassword forKey:@"TPassword"];
+        
+        [request setDelegate:self];
+        [request startAsynchronous];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Registering...";
+        self.navigationItem.hidesBackButton = YES;
     }
     else
     {
@@ -104,8 +89,40 @@
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles:nil];
         errorAlert.show;
-     
+        
     }
+}
+
+- (IBAction)CreateAccount:(id)sender {
+    if(![[_loginField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]
+       &&
+       ![[_passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""])
+    {
+    
+    if([_selectAccountType  isEqual: @"Teacher"])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify"
+                                                       message:@"Please put verify password"
+                                                      delegate:self
+                                             cancelButtonTitle:@"Send"
+                                             otherButtonTitles:nil];
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [alert show];
+       
+    }
+    else
+    [self sendRequest];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Fields cannot be empty"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Back"
+                                              otherButtonTitles:nil];
+    [alert show];
+    }
+
 }
 
 
@@ -117,7 +134,36 @@
         // _result.text = @"Invalid code";
     } else if (request.responseStatusCode == 403) {
         //  _result.text = @"Code already used";
-    } else if (request.responseStatusCode == 200) {
+    }else if (request.responseStatusCode == 410) {
+        
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"User already exsist"
+                                                             delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        errorAlert.show;
+        
+
+        
+    }
+    else if (request.responseStatusCode == 405) {
+        NSString *responseString = [request responseString];
+
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"Verification failed"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        errorAlert.show;
+        
+        
+        
+    }
+    else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
         
         //
@@ -161,5 +207,33 @@
 }
 - (IBAction)backPush:(id)sender {
    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField;
+{
+    _loginField.text=[_loginField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    _tPassword=[[NSString alloc]init];
+    if(alertView.alertViewStyle== UIAlertViewStylePlainTextInput )
+    {
+        _tPassword= [alertView textFieldAtIndex:0].text;
+        if(![_tPassword isEqualToString:@""])
+            [self sendRequest];
+        else
+        {
+            UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                 message:@"Verify field cannot be empty"
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"OK"
+                                                       otherButtonTitles:nil];
+            errorAlert.show;
+        }
+    }
+
 }
 @end

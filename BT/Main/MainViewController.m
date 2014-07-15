@@ -46,8 +46,16 @@
     {
         if (_user)
         {
-        if([[[_user valueForKey:@"Department"] description]rangeOfString:@""].location != NSNotFound)
-        {
+        //if([[[_user valueForKey:@"Department"] description] rangeOfString:@""].location != NSNotFound)
+#warning SYFF
+#warning SYFF
+            #warning SYFF
+            NSString* test =[[NSString alloc]initWithString:[[_user valueForKey:@"Department"]description]];
+            test = [test stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
+            test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
+            test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            if([test isEqualToString:@"\"\""])
+            {
             
             UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                                  message:@"You have empty detail\n Do you want fill it right now?"
@@ -87,15 +95,10 @@
         //  _result.text = @"Code already used";
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
-//        NSRange startRange = [responseString rangeOfString:@"Array[{"];
-//        NSRange endRange = [responseString rangeOfString:@"\"}]"];
-//        NSRange searchRange = NSMakeRange(startRange.location+6 , endRange.location-startRange.location-4 );
-//        
-//        NSString* forJSON=[[NSString alloc]initWithString:[responseString substringWithRange:searchRange]];
-//        
         NSLog(@"%@",responseString);
-       
-        
+         NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+        NSError*error;
+        _user=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
         _user = [responseString JSONValue];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         

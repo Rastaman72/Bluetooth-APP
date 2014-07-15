@@ -30,8 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = YES;
-    _loginField.text=@"tr";
-    _passwordFIeld.text=@"tr";
+    _loginField.text=@"rt";
+    _passwordFIeld.text=@"rt";
     
 
 }

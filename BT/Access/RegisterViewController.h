@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Connection.h"
-@interface RegisterViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>
+@interface RegisterViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *CreateAccountButton;
 - (IBAction)CreateAccount:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *loginField;
@@ -22,5 +22,6 @@
 
 @property (retain,nonatomic) NSString* selectAccountType;
 @property (weak, nonatomic) IBOutlet UITextField *repeatPasswordField;
+@property (nonatomic,retain) NSString* tPassword;
 
 @end
