@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-
+#import <AdSupport/ASIdentifierManager.h>
 
 @interface MainViewController ()
 
@@ -109,7 +109,25 @@
        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
-    } else {
+    }
+    
+    else if (request.responseStatusCode == 210) {
+        NSString *responseString = [request responseString];
+        NSLog(@"%@",responseString);
+       NSArray *listItems = [responseString componentsSeparatedByString:@","];
+      // for (NSString* singlePlace in listItems) {
+            NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+            NSError*error;
+            _place=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+            Localization* singlePlace=[Localization initLocalizationWithID:[[_place valueForKey:@"Device"]description] andTime:[[_place valueForKey:@"Time"]description ] andGpsLong:[[_place valueForKey:@"GPSLong"]description] andGpsLati:[[_place valueForKey:@"GPSLati"]description] andBeacon:[[_place valueForKey:@"Place"]description]];
+            [_localizationArray addObject:singlePlace];
+        
+       // }
+       
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+    }
+    else {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO; 
     }
@@ -136,6 +154,8 @@
 {
    
     [super viewDidLoad];
+    _UUID = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+
      [self performSegueWithIdentifier:@"MainToLogin" sender:self];
     self.navigationItem.hidesBackButton = YES;
 
@@ -187,6 +207,14 @@
         SVC.userData = _user;        
     }
     
+    
+    if ([segue.identifier isEqualToString:@"MainToMap"]) {
+        MapViewController *MVC = (MapViewController*)segue.destinationViewController;
+        [MVC.localizationArray addObjectsFromArray:_localizationArray];
+    }
+    
+    
+    
 }
 
 - (IBAction)logOut:(id)sender {
@@ -196,4 +224,19 @@
 }
 
 
+
+- (IBAction)mapPush:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
+  
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:@"getHistory" forKey:@"TYPE"];
+    [request setPostValue:_UUID forKey:@"UUID"];
+    [request setDelegate:self];
+    [request startAsynchronous];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Updating...";
+    self.navigationItem.hidesBackButton = YES;
+
+    
+}
 @end

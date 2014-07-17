@@ -13,4 +13,8 @@
 - (IBAction)SQLPush:(id)sender;
 @property(nonatomic,retain) NSString* bluetoothID;
 @property (nonatomic,retain)NSDictionary* user;
+@property (nonatomic,assign)float gpsLongitude;
+@property  (nonatomic,assign)float gpsLatitude;
+@property  (nonatomic,retain)NSDate* timeMark;
+
 @end

@@ -8,8 +8,9 @@
 
 #import "InfoFiewViewController.h"
 #import <AdSupport/ASIdentifierManager.h>
+#import <CoreLocation/CoreLocation.h>
 @interface InfoFiewViewController ()
-
+@property (nonatomic, strong) CLLocationManager *locationManager;
 @end
 
 @implementation InfoFiewViewController
@@ -26,6 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLocationManager:[[CLLocationManager alloc] init]];
+	[_locationManager setDelegate:self];
+	[_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+	[_locationManager startUpdatingLocation];
     // Do any additional setup after loading the view.
     
     }
@@ -36,23 +41,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+	//1
+	CLLocation *lastLocation = [locations lastObject];
+    _gpsLongitude=lastLocation.coordinate.longitude;
+	_gpsLatitude=lastLocation.coordinate.latitude;//2
+    _timeMark=lastLocation.timestamp;
+	CLLocationAccuracy accuracy = [lastLocation horizontalAccuracy];
+	NSLog(@"Received location %@ with accuracy %f", lastLocation, accuracy);
+    
+	//3
+		[manager stopUpdatingLocation];
+	
+}
 
 - (IBAction)SQLPush:(id)sender {
     NSString* code;
    code=_bluetoothID;
 
-   // NSString* UUID=[[NSString alloc]initWithString:[[NSUUID UUID]UUIDString ]];
-  NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+   
+    NSString *UUID = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
-    
+    NSNumber* gpsLongitude=[[NSNumber alloc]initWithFloat:_gpsLongitude];
+    NSNumber* gpsLatitude=[[NSNumber alloc]initWithFloat:_gpsLatitude ];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"deviceInfo" forKey:@"TYPE"];
-    [request setPostValue:code forKey:@"UUID"];
-    [request setPostValue:code forKey:@"gpsH"];
-    [request setPostValue:code forKey:@"gpsW"];
-    [request setPostValue:code forKey:@"time"];
-    [request setPostValue:code forKey:@"place"];
+    [request setPostValue:UUID forKey:@"UUID"];
+    [request setPostValue:gpsLongitude forKey:@"gpsLong"];
+    [request setPostValue:gpsLatitude forKey:@"gpsLati"];
+    [request setPostValue:_timeMark forKey:@"time"];
+    [request setPostValue:_bluetoothID forKey:@"place"];
  
     [request setDelegate:self];
     [request startAsynchronous];

@@ -10,10 +10,17 @@
 #import "MainAccessViewController.h"
 #import "BTViewControllerTableViewController.h"
 #import "SettingsViewController.h"
+#import "MapViewController.h"
+#import "Localization.h"
 
 @interface MainViewController : UIViewController <UIAlertViewDelegate,LoginDelegate>
 - (IBAction)logOut:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logOutButton;
 @property(nonatomic,retain)NSDictionary* user;
+@property (weak, nonatomic) IBOutlet UIButton *mapButton;
+- (IBAction)mapPush:(id)sender;
 @property(nonatomic,assign)bool updateData;
+@property(nonatomic,retain) NSString *UUID;
+@property(nonatomic,retain)NSDictionary* place;
+@property(nonatomic,retain)NSMutableArray* localizationArray;
 @end

@@ -14,6 +14,8 @@
 #import "Connection.h"
 
 @interface SettingsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+- (IBAction)backPush:(id)sender;
 
 @property(nonatomic,retain)NSDictionary* userData;
 

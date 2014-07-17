@@ -11,6 +11,9 @@
 		E90FF875196AA23400D9F359 /* InfoFiewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF874196AA23400D9F359 /* InfoFiewViewController.m */; };
 		E90FF879196AC81B00D9F359 /* VerifyTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF878196AC81B00D9F359 /* VerifyTeacherViewController.m */; };
 		E917FD381968A4B400096727 /* SettingsTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E917FD371968A4B400096727 /* SettingsTeacherViewController.m */; };
+		E920E7281978303000635FBD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E920E7271978303000635FBD /* MapViewController.m */; };
+		E920E72A197831BE00635FBD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E920E729197831BE00635FBD /* MapKit.framework */; };
+		E92A15D01978475000510FB9 /* Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = E92A15CF1978475000510FB9 /* Localization.m */; };
 		E92C52D419653AD500BADBA7 /* BTViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */; };
 		E92C52D819653B9B00BADBA7 /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D719653B9B00BADBA7 /* Beacon.m */; };
 		E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52DA1965444800BADBA7 /* BTCellTableViewCell.m */; };
@@ -85,6 +88,11 @@
 		E90FF878196AC81B00D9F359 /* VerifyTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerifyTeacherViewController.m; path = Access/VerifyTeacherViewController.m; sourceTree = "<group>"; };
 		E917FD361968A4B400096727 /* SettingsTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTeacherViewController.h; path = Settings/SettingsTeacherViewController.h; sourceTree = "<group>"; };
 		E917FD371968A4B400096727 /* SettingsTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTeacherViewController.m; path = Settings/SettingsTeacherViewController.m; sourceTree = "<group>"; };
+		E920E7261978303000635FBD /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Map/MapViewController.h; sourceTree = "<group>"; };
+		E920E7271978303000635FBD /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Map/MapViewController.m; sourceTree = "<group>"; };
+		E920E729197831BE00635FBD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E92A15CE1978475000510FB9 /* Localization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Localization.h; path = Main/Localization.h; sourceTree = "<group>"; };
+		E92A15CF1978475000510FB9 /* Localization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Localization.m; path = Main/Localization.m; sourceTree = "<group>"; };
 		E92C52D219653AD500BADBA7 /* BTViewControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTViewControllerTableViewController.h; path = BTData/BTViewControllerTableViewController.h; sourceTree = "<group>"; };
 		E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTViewControllerTableViewController.m; path = BTData/BTViewControllerTableViewController.m; sourceTree = "<group>"; };
 		E92C52D619653B9B00BADBA7 /* Beacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Beacon.h; path = BTData/Beacon.h; sourceTree = "<group>"; };
@@ -191,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E920E72A197831BE00635FBD /* MapKit.framework in Frameworks */,
 				E9383AD51975CF0200DE5689 /* AdSupport.framework in Frameworks */,
 				E9336E2819680D4200FBE395 /* libEstimoteSDK.a in Frameworks */,
 				E9336E1D19680BD500FBE395 /* CoreLocation.framework in Frameworks */,
@@ -225,6 +234,15 @@
 				E917FD371968A4B400096727 /* SettingsTeacherViewController.m */,
 			);
 			name = Teacher;
+			sourceTree = "<group>";
+		};
+		E920E7251978301700635FBD /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				E920E7261978303000635FBD /* MapViewController.h */,
+				E920E7271978303000635FBD /* MapViewController.m */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		E92C52D519653ADC00BADBA7 /* BTData */ = {
@@ -275,6 +293,7 @@
 		E944B4E419645291008B6B23 = {
 			isa = PBXGroup;
 			children = (
+				E920E7251978301700635FBD /* Map */,
 				E9336E2919682BE900FBE395 /* Info */,
 				E9336E1E19680D4200FBE395 /* EstimoteSDK */,
 				E9FE78161965A9BB0014BBE2 /* Access */,
@@ -304,6 +323,7 @@
 		E944B4EF19645291008B6B23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E920E729197831BE00635FBD /* MapKit.framework */,
 				E9383AD41975CF0200DE5689 /* AdSupport.framework */,
 				E9336E1C19680BD500FBE395 /* CoreLocation.framework */,
 				E944B57B19645437008B6B23 /* CoreBluetooth.framework */,
@@ -447,6 +467,8 @@
 			children = (
 				E9FE78131965A8480014BBE2 /* MainViewController.h */,
 				E9FE78141965A8480014BBE2 /* MainViewController.m */,
+				E92A15CE1978475000510FB9 /* Localization.h */,
+				E92A15CF1978475000510FB9 /* Localization.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -584,6 +606,7 @@
 			files = (
 				E944B55E196453FF008B6B23 /* ASIDataCompressor.m in Sources */,
 				E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */,
+				E920E7281978303000635FBD /* MapViewController.m in Sources */,
 				E944B570196453FF008B6B23 /* SBJsonWriter.m in Sources */,
 				E944B56B196453FF008B6B23 /* SBJsonStreamWriter.m in Sources */,
 				E944B56E196453FF008B6B23 /* SBJsonTokeniser.m in Sources */,
@@ -611,6 +634,7 @@
 				E9FE78151965A8480014BBE2 /* MainViewController.m in Sources */,
 				E944B564196453FF008B6B23 /* ASINetworkQueue.m in Sources */,
 				E944B55F196453FF008B6B23 /* ASIDataDecompressor.m in Sources */,
+				E92A15D01978475000510FB9 /* Localization.m in Sources */,
 				E944B567196453FF008B6B23 /* SBJsonStreamParser.m in Sources */,
 				E944B565196453FF008B6B23 /* NSObject+SBJson.m in Sources */,
 				E9FF3C241965586B00E2DE6A /* SettingsViewController.m in Sources */,

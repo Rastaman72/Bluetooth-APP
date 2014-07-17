@@ -365,6 +365,37 @@
             </objects>
             <point key="canvasLocation" x="2391" y="-543"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Orx-l4-H24">
+            <objects>
+                <viewController id="D5z-tB-C2V" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KBc-3U-lA3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="90R-Wm-0Hd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ccy-u4-Gsa">
+                                <rect key="frame" x="-10" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Refresh" id="af4-I7-My5"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uFY-F6-AS2"/>
+                    <connections>
+                        <outlet property="map" destination="90R-Wm-0Hd" id="Rg4-Zj-SZn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2dl-nx-1mB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817" y="982"/>
+        </scene>
         <!--Settings View Controller - Settings-->
         <scene sceneID="K9C-1c-n9g">
             <objects>
@@ -403,8 +434,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="jn4-Nb-FQk"/>
-                    <navigationItem key="navigationItem" id="grw-cB-KXo"/>
+                    <navigationItem key="navigationItem" id="grw-cB-KXo">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="GYC-VQ-Fop">
+                            <connections>
+                                <action selector="backPush:" destination="QOh-fm-Psz" id="xZk-lb-Jay"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="GYC-VQ-Fop" id="MiL-Ej-BNg"/>
                         <outlet property="studentButton" destination="45L-Cn-ylE" id="wCX-rM-mun"/>
                         <outlet property="teacherButton" destination="qcY-QG-u9c" id="SUZ-yH-3Qc"/>
                         <segue destination="i9o-FT-PwO" kind="push" identifier="SettingsToTeacher" id="Zwp-H1-2qT"/>
@@ -552,6 +590,16 @@
                                     <segue destination="QnG-kg-aJl" kind="push" identifier="MainToBTList" id="Lcp-BB-lEC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HsM-nX-8vy">
+                                <rect key="frame" x="76" y="432" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Mapka">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mapPush:" destination="rBu-7O-fHN" eventType="touchUpInside" id="P0r-ml-Y7E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -566,12 +614,14 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="logOutButton" destination="yf9-nU-AuY" id="4Lw-sa-O7D"/>
+                        <outlet property="mapButton" destination="HsM-nX-8vy" id="tbF-5I-Fyu"/>
                         <segue destination="qNx-fX-gBy" kind="modal" identifier="MainToLogin" customClass="ProperViewSegue" id="Ewk-Vc-0s7"/>
+                        <segue destination="D5z-tB-C2V" kind="push" identifier="MainToMap" id="4zE-2W-LL9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4h-tJ-Ycy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="266"/>
+            <point key="canvasLocation" x="137" y="198"/>
         </scene>
         <!--Navigation Controller - MainEntry-->
         <scene sceneID="pte-io-7JA">

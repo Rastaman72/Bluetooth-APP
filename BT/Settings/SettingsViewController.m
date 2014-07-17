@@ -63,16 +63,10 @@
         
     } else if (request.responseStatusCode == 201) {
         NSString *responseString = [request responseString];
-        //dokonczyc parsowanie odpowiedzi na temat ustawien studenta i teachera
+       
         responseString= [responseString stringByReplacingOccurrencesOfString:@"[" withString:@""];
         responseString= [responseString stringByReplacingOccurrencesOfString:@"]" withString:@""];
-        
-
-        
         NSLog(@"%@",responseString);
-        
-        
-        
         NSArray *listItems = [responseString componentsSeparatedByString:@","];
         _tempDepartment = [[NSMutableDictionary alloc]init];
         _tempYear = [[NSMutableDictionary alloc]init];
@@ -271,5 +265,12 @@
     [request startAsynchronous];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
-    self.navigationItem.hidesBackButton = YES;}
+    self.navigationItem.hidesBackButton = YES;
+}
+
+- (IBAction)backPush:(id)sender {
+    [[self navigationController]popToRootViewControllerAnimated:YES];
+    
+   // [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
