@@ -62,6 +62,7 @@
 		E944B5781964542B008B6B23 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B5771964542B008B6B23 /* SystemConfiguration.framework */; };
 		E944B57A19645433008B6B23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B57919645433008B6B23 /* CFNetwork.framework */; };
 		E944B57C19645437008B6B23 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E944B57B19645437008B6B23 /* CoreBluetooth.framework */; };
+		E9D46FB0197EBD9A0042BD76 /* SetHistoryPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D46FAF197EBD9A0042BD76 /* SetHistoryPlace.m */; };
 		E9FE78151965A8480014BBE2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE78141965A8480014BBE2 /* MainViewController.m */; };
 		E9FE78191965A9D60014BBE2 /* MainAccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE78181965A9D60014BBE2 /* MainAccessViewController.m */; };
 		E9FE781D1965B85C0014BBE2 /* SettingsStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE781C1965B85C0014BBE2 /* SettingsStudentViewController.m */; };
@@ -183,6 +184,8 @@
 		E944B5771964542B008B6B23 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E944B57919645433008B6B23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E944B57B19645437008B6B23 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		E9D46FAE197EBD9A0042BD76 /* SetHistoryPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetHistoryPlace.h; path = Map/SetHistoryPlace.h; sourceTree = "<group>"; };
+		E9D46FAF197EBD9A0042BD76 /* SetHistoryPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetHistoryPlace.m; path = Map/SetHistoryPlace.m; sourceTree = "<group>"; };
 		E9F3B998196592E60057B1C1 /* SERVICES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
 		E9FE78131965A8480014BBE2 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Main/MainViewController.h; sourceTree = "<group>"; };
 		E9FE78141965A8480014BBE2 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Main/MainViewController.m; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 			children = (
 				E920E7261978303000635FBD /* MapViewController.h */,
 				E920E7271978303000635FBD /* MapViewController.m */,
+				E9D46FAE197EBD9A0042BD76 /* SetHistoryPlace.h */,
+				E9D46FAF197EBD9A0042BD76 /* SetHistoryPlace.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -635,6 +640,7 @@
 				E944B564196453FF008B6B23 /* ASINetworkQueue.m in Sources */,
 				E944B55F196453FF008B6B23 /* ASIDataDecompressor.m in Sources */,
 				E92A15D01978475000510FB9 /* Localization.m in Sources */,
+				E9D46FB0197EBD9A0042BD76 /* SetHistoryPlace.m in Sources */,
 				E944B567196453FF008B6B23 /* SBJsonStreamParser.m in Sources */,
 				E944B565196453FF008B6B23 /* NSObject+SBJson.m in Sources */,
 				E9FF3C241965586B00E2DE6A /* SettingsViewController.m in Sources */,

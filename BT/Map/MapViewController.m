@@ -27,16 +27,18 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 
+    _map.showsUserLocation = YES;
     CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = 39.281516;
-    zoomLocation.longitude= -76.580806;
+    zoomLocation.latitude = _lastLocation.coordinate.latitude;
+    zoomLocation.longitude= _lastLocation.coordinate.longitude;
     
     // 2
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
     
     // 3
     [_map setRegion:viewRegion animated:YES];
-}
+    
+  }
 
 - (void)viewDidLoad
 {
@@ -61,4 +63,28 @@
 }
 */
 
+- (IBAction)historyPush:(id)sender {
+   
+    NSArray* historicalAnnotation=[[NSArray alloc] init];
+    historicalAnnotation=_map.annotations;
+    if(historicalAnnotation)
+    [_map removeAnnotations:historicalAnnotation];
+    
+          Localization* historicalPlaceObj =[[Localization alloc]init];
+        for (int i=0; i<[_localizationArray count]; i++) {
+      
+            historicalPlaceObj=[_localizationArray objectAtIndex:i];
+            
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"dd-MM-yyyy 'at' HH:mm"];
+            
+            NSString *fullName = [dateFormatter stringFromDate:historicalPlaceObj.timeStamp];
+            fullName=[fullName stringByAppendingString:@"\n"];
+            fullName=[fullName stringByAppendingString:historicalPlaceObj.beacon];
+            SetHistoryPlace* annotation=[[SetHistoryPlace alloc]initWithName:historicalPlaceObj.userID andSubtitle:fullName coordinate:historicalPlaceObj.gps andPlaceList:_localizationArray];
+            
+    [_map addAnnotation:annotation];
+    }
+   
+}
 @end

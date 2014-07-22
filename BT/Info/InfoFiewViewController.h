@@ -15,6 +15,6 @@
 @property (nonatomic,retain)NSDictionary* user;
 @property (nonatomic,assign)float gpsLongitude;
 @property  (nonatomic,assign)float gpsLatitude;
-@property  (nonatomic,retain)NSDate* timeMark;
+@property  (nonatomic,assign)double timeMark;
 
 @end

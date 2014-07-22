@@ -46,7 +46,8 @@
 	CLLocation *lastLocation = [locations lastObject];
     _gpsLongitude=lastLocation.coordinate.longitude;
 	_gpsLatitude=lastLocation.coordinate.latitude;//2
-    _timeMark=lastLocation.timestamp;
+
+    _timeMark=[lastLocation.timestamp timeIntervalSince1970];
 	CLLocationAccuracy accuracy = [lastLocation horizontalAccuracy];
 	NSLog(@"Received location %@ with accuracy %f", lastLocation, accuracy);
     
@@ -64,13 +65,24 @@
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     NSNumber* gpsLongitude=[[NSNumber alloc]initWithFloat:_gpsLongitude];
     NSNumber* gpsLatitude=[[NSNumber alloc]initWithFloat:_gpsLatitude ];
+    NSNumber* timeMark=[[NSNumber alloc]initWithDouble:_timeMark ];
+
+
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"deviceInfo" forKey:@"TYPE"];
     [request setPostValue:UUID forKey:@"UUID"];
     [request setPostValue:gpsLongitude forKey:@"gpsLong"];
     [request setPostValue:gpsLatitude forKey:@"gpsLati"];
-    [request setPostValue:_timeMark forKey:@"time"];
+    [request setPostValue:timeMark forKey:@"time"];
     [request setPostValue:_bluetoothID forKey:@"place"];
+    
+    NSString* userID =[[NSString alloc]initWithString:[[_user valueForKey:@"Login"]description]];
+    userID = [userID stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
+    userID = [userID stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
+    userID = [userID stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    
+    [request setPostValue:userID forKey:@"userID"];
  
     [request setDelegate:self];
     [request startAsynchronous];

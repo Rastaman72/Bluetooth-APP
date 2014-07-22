@@ -13,6 +13,7 @@
 @property(nonatomic,retain)NSDate* timeStamp;
 @property(nonatomic,assign)CLLocationCoordinate2D gps;
 @property(nonatomic,retain)NSString* beacon;
+@property(nonatomic,retain)NSString* userID;
 
-+(Localization*)initLocalizationWithID : (NSString*)deviceID andTime:(NSString*)timeStamp andGpsLong :(NSString*)gpsLong andGpsLati:(NSString*)gpsLati andBeacon:(NSString*)beacon;
++(Localization*)initLocalizationWithID : (NSString*)deviceID andTime:(NSString*)timeStamp andGpsLong :(NSString*)gpsLong andGpsLati:(NSString*)gpsLati andBeacon:(NSString*)beacon andUser:(NSString*)userID;
 @end

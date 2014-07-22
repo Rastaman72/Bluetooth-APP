@@ -8,12 +8,35 @@
 
 #import "MainViewController.h"
 #import <AdSupport/ASIdentifierManager.h>
-
+#import <CoreLocation/CoreLocation.h>
 @interface MainViewController ()
 
 @end
 
 @implementation MainViewController
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self setLocationManager:[[CLLocationManager alloc] init]];
+	[_locationManager setDelegate:self];
+	[_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+	[_locationManager startUpdatingLocation];
+
+}
+
+
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+	//1
+	_lastLocation = [locations lastObject];
+    CLLocationAccuracy accuracy = [_lastLocation horizontalAccuracy];
+	NSLog(@"Received location %@ with accuracy %f", _lastLocation, accuracy);
+    
+	//3
+    [manager stopUpdatingLocation];
+	
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,14 +98,14 @@
 {
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
-    NSString* test =[[NSString alloc]initWithString:[[_user valueForKey:@"Login"]description]];
-    test = [test stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
-    test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
-    test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString* userLogin =[[NSString alloc]initWithString:[[_user valueForKey:@"Login"]description]];
+    userLogin = [userLogin stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
+    userLogin = [userLogin stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
+    userLogin = [userLogin stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"getNewDataS" forKey:@"TYPE"];
-    [request setPostValue:test forKey:@"Login"];
+    [request setPostValue:userLogin forKey:@"Login"];
     [request setDelegate:self];
     [request startAsynchronous];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -112,17 +135,20 @@
     }
     
     else if (request.responseStatusCode == 210) {
+        _localizationArray=[[NSMutableArray alloc]init];
         NSString *responseString = [request responseString];
         NSLog(@"%@",responseString);
        NSArray *listItems = [responseString componentsSeparatedByString:@","];
-      // for (NSString* singlePlace in listItems) {
+    
             NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
             NSError*error;
             _place=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
-            Localization* singlePlace=[Localization initLocalizationWithID:[[_place valueForKey:@"Device"]description] andTime:[[_place valueForKey:@"Time"]description ] andGpsLong:[[_place valueForKey:@"GPSLong"]description] andGpsLati:[[_place valueForKey:@"GPSLati"]description] andBeacon:[[_place valueForKey:@"Place"]description]];
+        for (id onePlace in _place) {
+            Localization* singlePlace=[Localization initLocalizationWithID:[[onePlace valueForKey:@"Device"]description] andTime:[[onePlace valueForKey:@"Time"]description ] andGpsLong:[[onePlace valueForKey:@"GPSLong"]description] andGpsLati:[[onePlace valueForKey:@"GPSLati"]description] andBeacon:[[onePlace valueForKey:@"Place"]description] andUser:[[onePlace valueForKey:@"UserID"]description ] ];
             [_localizationArray addObject:singlePlace];
-        
-       // }
+
+        }
+         [self performSegueWithIdentifier:@"MainToMap" sender:self];
        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -210,7 +236,9 @@
     
     if ([segue.identifier isEqualToString:@"MainToMap"]) {
         MapViewController *MVC = (MapViewController*)segue.destinationViewController;
+        MVC.localizationArray =[[NSMutableArray alloc]init];
         [MVC.localizationArray addObjectsFromArray:_localizationArray];
+        MVC.lastLocation=_lastLocation;
     }
     
     

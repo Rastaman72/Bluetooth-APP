@@ -23,4 +23,6 @@
 @property(nonatomic,retain) NSString *UUID;
 @property(nonatomic,retain)NSDictionary* place;
 @property(nonatomic,retain)NSMutableArray* localizationArray;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property(nonatomic,retain)CLLocation *lastLocation;
 @end
