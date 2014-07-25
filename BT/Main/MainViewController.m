@@ -234,12 +234,12 @@
     }
     
     
-    if ([segue.identifier isEqualToString:@"MainToMap"]) {
+   /*if ([segue.identifier isEqualToString:@"MainToMap"]) {
         MapViewController *MVC = (MapViewController*)segue.destinationViewController;
         MVC.localizationArray =[[NSMutableArray alloc]init];
         [MVC.localizationArray addObjectsFromArray:_localizationArray];
         MVC.lastLocation=_lastLocation;
-    }
+    }*/
     
     
     
