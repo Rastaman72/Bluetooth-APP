@@ -14,6 +14,10 @@
 @end
 
 @implementation MainViewController
+{
+    dispatch_queue_t backgroundQueue;
+}
+
 
 
 -(void)viewWillAppear:(BOOL)animated
@@ -28,12 +32,10 @@
 
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-	//1
+	
 	_lastLocation = [locations lastObject];
     CLLocationAccuracy accuracy = [_lastLocation horizontalAccuracy];
 	NSLog(@"Received location %@ with accuracy %f", _lastLocation, accuracy);
-    
-	//3
     [manager stopUpdatingLocation];
 	
 }
@@ -69,14 +71,21 @@
     {
         if (_user)
         {
-        //if([[[_user valueForKey:@"Department"] description] rangeOfString:@""].location != NSNotFound)
-#warning SYFF
+        #warning SYFF
 #warning SYFF
             #warning SYFF
             NSString* test =[[NSString alloc]initWithString:[[_user valueForKey:@"Department"]description]];
             test = [test stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
             test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
             test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            
+            backgroundQueue = dispatch_queue_create("MainBack", NULL);
+            dispatch_async(backgroundQueue, ^(void) {
+                
+                Spy* newSpy=[[Spy alloc]initWithUser:_user];
+            });
+            
+            
             if([test isEqualToString:@"\"\""])
             {
             
@@ -122,7 +131,7 @@
         NSLog(@"%@",responseString);
 
     } else if (request.responseStatusCode == 403) {
-        //  _result.text = @"Code already used";
+        
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
         NSLog(@"%@",responseString);
@@ -199,19 +208,6 @@
        
 }
 
-
-
-
-
-/*
- -(void)studentSettingsViewControllerDidBack:(StudentSettingsViewController *)controller
- {
- [self dismissViewControllerAnimated:YES completion:nil];
- }
- 
- 
-*/
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -231,18 +227,7 @@
     if ([segue.identifier isEqualToString:@"MainToSettings"]) {
         SettingsViewController *SVC = (SettingsViewController*)segue.destinationViewController;
         SVC.userData = _user;        
-    }
-    
-    
-   /*if ([segue.identifier isEqualToString:@"MainToMap"]) {
-        MapViewController *MVC = (MapViewController*)segue.destinationViewController;
-        MVC.localizationArray =[[NSMutableArray alloc]init];
-        [MVC.localizationArray addObjectsFromArray:_localizationArray];
-        MVC.lastLocation=_lastLocation;
-    }*/
-    
-    
-    
+    }    
 }
 
 - (IBAction)logOut:(id)sender {

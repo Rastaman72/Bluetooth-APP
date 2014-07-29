@@ -12,7 +12,8 @@
 #import "SettingsViewController.h"
 #import "MapViewController.h"
 #import "Localization.h"
-
+#import <dispatch/dispatch.h>
+#import "Spy.h"
 @interface MainViewController : UIViewController <UIAlertViewDelegate,LoginDelegate>
 - (IBAction)logOut:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logOutButton;

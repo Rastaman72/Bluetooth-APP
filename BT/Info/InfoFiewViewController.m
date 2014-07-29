@@ -81,7 +81,6 @@
     userID = [userID stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
     userID = [userID stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
-    
     [request setPostValue:userID forKey:@"userID"];
  
     [request setDelegate:self];

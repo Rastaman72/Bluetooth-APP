@@ -13,6 +13,7 @@
 		E917FD381968A4B400096727 /* SettingsTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E917FD371968A4B400096727 /* SettingsTeacherViewController.m */; };
 		E920E7281978303000635FBD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E920E7271978303000635FBD /* MapViewController.m */; };
 		E920E72A197831BE00635FBD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E920E729197831BE00635FBD /* MapKit.framework */; };
+		E9241F031987850300D87A20 /* Spy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9241F021987850300D87A20 /* Spy.m */; };
 		E92A15D01978475000510FB9 /* Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = E92A15CF1978475000510FB9 /* Localization.m */; };
 		E92C52D419653AD500BADBA7 /* BTViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D319653AD500BADBA7 /* BTViewControllerTableViewController.m */; };
 		E92C52D819653B9B00BADBA7 /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C52D719653B9B00BADBA7 /* Beacon.m */; };
@@ -92,6 +93,8 @@
 		E920E7261978303000635FBD /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Map/MapViewController.h; sourceTree = "<group>"; };
 		E920E7271978303000635FBD /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Map/MapViewController.m; sourceTree = "<group>"; };
 		E920E729197831BE00635FBD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E9241F011987850300D87A20 /* Spy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spy.h; sourceTree = "<group>"; };
+		E9241F021987850300D87A20 /* Spy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spy.m; sourceTree = "<group>"; };
 		E92A15CE1978475000510FB9 /* Localization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Localization.h; path = Main/Localization.h; sourceTree = "<group>"; };
 		E92A15CF1978475000510FB9 /* Localization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Localization.m; path = Main/Localization.m; sourceTree = "<group>"; };
 		E92C52D219653AD500BADBA7 /* BTViewControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTViewControllerTableViewController.h; path = BTData/BTViewControllerTableViewController.h; sourceTree = "<group>"; };
@@ -347,6 +350,8 @@
 		E944B4F619645291008B6B23 /* BT */ = {
 			isa = PBXGroup;
 			children = (
+				E9241F011987850300D87A20 /* Spy.h */,
+				E9241F021987850300D87A20 /* Spy.m */,
 				E9F3B998196592E60057B1C1 /* SERVICES.h */,
 				E944B4FF19645291008B6B23 /* AppDelegate.h */,
 				E944B50019645291008B6B23 /* AppDelegate.m */,
@@ -621,6 +626,7 @@
 				E944B50A19645291008B6B23 /* ViewController.m in Sources */,
 				E944B562196453FF008B6B23 /* ASIHTTPRequest.m in Sources */,
 				E944B571196453FF008B6B23 /* MBProgressHUD.m in Sources */,
+				E9241F031987850300D87A20 /* Spy.m in Sources */,
 				E9FE78191965A9D60014BBE2 /* MainAccessViewController.m in Sources */,
 				E944B55D196453FF008B6B23 /* ASIAuthenticationDialog.m in Sources */,
 				E944B56A196453FF008B6B23 /* SBJsonStreamParserState.m in Sources */,

@@ -401,6 +401,41 @@
             </objects>
             <point key="canvasLocation" x="-937" y="3340"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="f7M-ej-vqt">
+            <objects>
+                <viewController id="Bun-nu-AaF" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="POC-4A-8H8">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="oGT-x6-84Q">
+                                <rect key="frame" x="56" y="292" width="657" height="677"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3js-7W-vFR">
+                                <rect key="frame" x="308" y="254" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="historyPush:" destination="Bun-nu-AaF" eventType="touchUpInside" id="N2H-xh-k6V"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VZb-ow-K7h"/>
+                    <connections>
+                        <outlet property="historyButton" destination="3js-7W-vFR" id="cs2-pa-lBN"/>
+                        <outlet property="map" destination="oGT-x6-84Q" id="ZUy-Ec-CrS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bma-lK-R36" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="186" y="3312"/>
+        </scene>
         <!--Table View Controller - Root View Controller-->
         <scene sceneID="RVD-dL-Shq">
             <objects>
@@ -680,7 +715,7 @@
                         <outlet property="logOutButton" destination="yf9-nU-AuY" id="4Lw-sa-O7D"/>
                         <outlet property="mapButton" destination="HsM-nX-8vy" id="tbF-5I-Fyu"/>
                         <segue destination="qNx-fX-gBy" kind="modal" identifier="MainToLogin" customClass="ProperViewSegue" id="Ewk-Vc-0s7"/>
-                        <segue destination="DvO-ON-EhS" kind="push" identifier="MainToMap" id="qJo-ey-Z85"/>
+                        <segue destination="Bun-nu-AaF" kind="push" identifier="MainToMap" id="WqJ-Xe-TrM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4h-tJ-Ycy" userLabel="First Responder" sceneMemberID="firstResponder"/>
