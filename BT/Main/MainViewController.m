@@ -60,6 +60,12 @@
     }
 }
 
+-(void)spy{
+    _localSpy=[[Spy alloc]initWithUser:_user];
+    _localSpy.process;
+
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     if(_updateData)
@@ -79,12 +85,7 @@
             test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
             test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             
-            backgroundQueue = dispatch_queue_create("MainBack", NULL);
-            dispatch_async(backgroundQueue, ^(void) {
-                
-                Spy* newSpy=[[Spy alloc]initWithUser:_user];
-            });
-            
+            self.spyTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(spy) userInfo:nil repeats: YES];
             
             if([test isEqualToString:@"\"\""])
             {
@@ -227,7 +228,13 @@
     if ([segue.identifier isEqualToString:@"MainToSettings"]) {
         SettingsViewController *SVC = (SettingsViewController*)segue.destinationViewController;
         SVC.userData = _user;        
-    }    
+    }
+    
+    if ([segue.identifier isEqualToString:@"MainToMap"]) {
+         MapRootTableViewController *MRTVC = (MapRootTableViewController*)segue.destinationViewController;
+        //MRTVC.users=[[NSMutableArray alloc]init];
+      //  [MRTVC.users addObject:_user];
+          }
 }
 
 - (IBAction)logOut:(id)sender {

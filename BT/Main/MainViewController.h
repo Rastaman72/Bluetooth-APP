@@ -14,6 +14,7 @@
 #import "Localization.h"
 #import <dispatch/dispatch.h>
 #import "Spy.h"
+#import "MapRootTableViewController.h"
 @interface MainViewController : UIViewController <UIAlertViewDelegate,LoginDelegate>
 - (IBAction)logOut:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logOutButton;
@@ -26,4 +27,6 @@
 @property(nonatomic,retain)NSMutableArray* localizationArray;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property(nonatomic,retain)CLLocation *lastLocation;
+@property(nonatomic,strong)Spy* localSpy;
+@property(nonatomic,strong)NSTimer *spyTimer;
 @end

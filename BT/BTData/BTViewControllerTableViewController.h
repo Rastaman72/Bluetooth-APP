@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-#import "SERVICES.h"
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
 #import "InfoFiewViewController.h"

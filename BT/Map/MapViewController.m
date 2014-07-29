@@ -32,10 +32,10 @@
     zoomLocation.latitude = _lastLocation.coordinate.latitude;
     zoomLocation.longitude= _lastLocation.coordinate.longitude;
     
-    // 2
+    
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
     
-    // 3
+
     [_map setRegion:viewRegion animated:YES];
     
   }
@@ -87,4 +87,18 @@
     }
    
 }
+
+
+-(void)setStudent:(StudentAccount *)student
+{
+    if(self.student!=student)
+    {
+        self.student=student;
+        [self historyPush:self];
+        
+    }
+}
+
+
+
 @end

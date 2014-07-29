@@ -14,8 +14,9 @@
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
 #import <dispatch/dispatch.h>
+#import <Foundation/Foundation.h>
 
-@interface Spy : NSObject<ESTBeaconManagerDelegate>
+@interface Spy : NSOperation<ESTBeaconManagerDelegate>
 
 @property(nonatomic,retain) NSString* bluetoothID;
 @property (nonatomic,retain)NSDictionary* user;
@@ -24,6 +25,7 @@
 @property  (nonatomic,assign)double timeMark;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 -(void)sendData;
+-(void)process;
 -(Spy*)initWithUser:(NSDictionary*)user;
 @property (nonatomic, strong) NSMutableArray *btBeacon;
 

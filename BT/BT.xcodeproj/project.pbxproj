@@ -10,6 +10,8 @@
 		E90FF872196AA14700D9F359 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF871196AA14700D9F359 /* RegisterViewController.m */; };
 		E90FF875196AA23400D9F359 /* InfoFiewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF874196AA23400D9F359 /* InfoFiewViewController.m */; };
 		E90FF879196AC81B00D9F359 /* VerifyTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90FF878196AC81B00D9F359 /* VerifyTeacherViewController.m */; };
+		E9108129198808F600FBF04E /* MapRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9108128198808F600FBF04E /* MapRootTableViewController.m */; };
+		E910812D1988099300FBF04E /* StudentAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E910812C1988099300FBF04E /* StudentAccount.m */; };
 		E917FD381968A4B400096727 /* SettingsTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E917FD371968A4B400096727 /* SettingsTeacherViewController.m */; };
 		E920E7281978303000635FBD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E920E7271978303000635FBD /* MapViewController.m */; };
 		E920E72A197831BE00635FBD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E920E729197831BE00635FBD /* MapKit.framework */; };
@@ -88,6 +90,10 @@
 		E90FF876196AC62C00D9F359 /* Connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		E90FF877196AC81B00D9F359 /* VerifyTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerifyTeacherViewController.h; path = Access/VerifyTeacherViewController.h; sourceTree = "<group>"; };
 		E90FF878196AC81B00D9F359 /* VerifyTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerifyTeacherViewController.m; path = Access/VerifyTeacherViewController.m; sourceTree = "<group>"; };
+		E9108127198808F600FBF04E /* MapRootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapRootTableViewController.h; path = Map/MapRootTableViewController.h; sourceTree = "<group>"; };
+		E9108128198808F600FBF04E /* MapRootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapRootTableViewController.m; path = Map/MapRootTableViewController.m; sourceTree = "<group>"; };
+		E910812B1988099300FBF04E /* StudentAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentAccount.h; path = Map/StudentAccount.h; sourceTree = "<group>"; };
+		E910812C1988099300FBF04E /* StudentAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentAccount.m; path = Map/StudentAccount.m; sourceTree = "<group>"; };
 		E917FD361968A4B400096727 /* SettingsTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTeacherViewController.h; path = Settings/SettingsTeacherViewController.h; sourceTree = "<group>"; };
 		E917FD371968A4B400096727 /* SettingsTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTeacherViewController.m; path = Settings/SettingsTeacherViewController.m; sourceTree = "<group>"; };
 		E920E7261978303000635FBD /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Map/MapViewController.h; sourceTree = "<group>"; };
@@ -249,6 +255,10 @@
 				E920E7271978303000635FBD /* MapViewController.m */,
 				E9D46FAE197EBD9A0042BD76 /* SetHistoryPlace.h */,
 				E9D46FAF197EBD9A0042BD76 /* SetHistoryPlace.m */,
+				E9108127198808F600FBF04E /* MapRootTableViewController.h */,
+				E9108128198808F600FBF04E /* MapRootTableViewController.m */,
+				E910812B1988099300FBF04E /* StudentAccount.h */,
+				E910812C1988099300FBF04E /* StudentAccount.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -616,8 +626,10 @@
 			files = (
 				E944B55E196453FF008B6B23 /* ASIDataCompressor.m in Sources */,
 				E92C52DB1965444800BADBA7 /* BTCellTableViewCell.m in Sources */,
+				E910812D1988099300FBF04E /* StudentAccount.m in Sources */,
 				E920E7281978303000635FBD /* MapViewController.m in Sources */,
 				E944B570196453FF008B6B23 /* SBJsonWriter.m in Sources */,
+				E9108129198808F600FBF04E /* MapRootTableViewController.m in Sources */,
 				E944B56B196453FF008B6B23 /* SBJsonStreamWriter.m in Sources */,
 				E944B56E196453FF008B6B23 /* SBJsonTokeniser.m in Sources */,
 				E944B572196453FF008B6B23 /* Reachability.m in Sources */,

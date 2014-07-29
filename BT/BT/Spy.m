@@ -21,18 +21,16 @@ dispatch_queue_t backgroundQueue;
         newSpy.user=user;
     }
     
-    backgroundQueue = dispatch_queue_create("SpyBack", NULL);
-    [self process];
+   // backgroundQueue = dispatch_queue_create("SpyBack", NULL);
+    
 
     return newSpy;
 }
 
 - (void)process {
-    dispatch_async(backgroundQueue, ^(void) {
-        
-        [self startMonitoringGPS];
-        
-    });
+    
+        [self startMonitoringBT];
+    
 }
 
 - (void)startMonitoringGPS
@@ -57,7 +55,7 @@ dispatch_queue_t backgroundQueue;
 	NSLog(@"Received location %@ with accuracy %f", lastLocation, accuracy);
     
     [manager stopUpdatingLocation];
-  [self startMonitoringBT];
+   [self sendData];
 	
 }
 
@@ -72,14 +70,34 @@ dispatch_queue_t backgroundQueue;
                                                                  minor:[self.beacon.minor unsignedIntValue]
                                                             identifier:@"RegionIdentifier"];
     [self.beaconManager startRangingBeaconsInRegion:self.beaconRegion];
-}
-
+   }
 
 - (void)beaconManager:(ESTBeaconManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(ESTBeaconRegion *)region
 {
+    
     self.btBeacon = beacons;
-    _bluetoothID=@"MEGATEST";
-      [self sendData];
+    if ([beacons count]>0) {
+        for (ESTBeacon* tempBeacon in beacons) {
+            ESTBeacon* first=[beacons firstObject];
+            _bluetoothID=[NSString stringWithFormat:@"%d",first.color];
+            
+            if (first.distance<tempBeacon.distance) {
+                _bluetoothID=[NSString stringWithFormat:@"%d",tempBeacon.color];
+                
+            }
+        }
+    }
+    else
+        _bluetoothID=@"nicNieMa";
+    
+    self.beaconManager=nil;
+    
+    
+    //for test
+    [self sendData];
+    //[self startMonitoringGPS];
+    
+
 
 }
 
@@ -90,6 +108,9 @@ dispatch_queue_t backgroundQueue;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     NSNumber* gpsLongitude=[[NSNumber alloc]initWithFloat:_gpsLongitude];
     NSNumber* gpsLatitude=[[NSNumber alloc]initWithFloat:_gpsLatitude ];
+    
+    _timeMark=[[NSDate date]timeIntervalSince1970];
+    
     NSNumber* timeMark=[[NSNumber alloc]initWithDouble:_timeMark ];
     
     
