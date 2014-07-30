@@ -26,7 +26,7 @@
 	[_locationManager setDelegate:self];
 	[_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
 	[_locationManager startUpdatingLocation];
-
+    
 }
 
 
@@ -63,7 +63,7 @@
 -(void)spy{
     _localSpy=[[Spy alloc]initWithUser:_user];
     _localSpy.process;
-
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -77,27 +77,27 @@
     {
         if (_user)
         {
-        #warning SYFF
 #warning SYFF
-            #warning SYFF
+#warning SYFF
+#warning SYFF
             NSString* test =[[NSString alloc]initWithString:[[_user valueForKey:@"Department"]description]];
             test = [test stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
             test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
             test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             
-            self.spyTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(spy) userInfo:nil repeats: YES];
+            self.spyTimer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(spy) userInfo:nil repeats: YES];
             
             if([test isEqualToString:@"\"\""])
             {
-            
-            UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                 message:@"You have empty detail\n Do you want fill it right now?"
-                                                                delegate:self
-                                                       cancelButtonTitle:@"Fill it"
-                                                       otherButtonTitles:@"Back",nil];
-            errorAlert.show;
-          
-        }
+                
+                UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                     message:@"You have empty detail\n Do you want fill it right now?"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Fill it"
+                                                           otherButtonTitles:@"Back",nil];
+                errorAlert.show;
+                
+            }
         }
         
     }
@@ -121,7 +121,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
     self.navigationItem.hidesBackButton = YES;
-
+    
 }
 
 
@@ -130,16 +130,16 @@
     if (request.responseStatusCode == 400) {
         NSString *responseString = [request responseString];
         NSLog(@"%@",responseString);
-
+        
     } else if (request.responseStatusCode == 403) {
         
     } else if (request.responseStatusCode == 200) {
         NSString *responseString = [request responseString];
         NSLog(@"%@",responseString);
-         NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+        NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
         NSError*error;
         _user=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
-       
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
     }
@@ -148,24 +148,24 @@
         _localizationArray=[[NSMutableArray alloc]init];
         NSString *responseString = [request responseString];
         NSLog(@"%@",responseString);
-       NSArray *listItems = [responseString componentsSeparatedByString:@","];
-    
-            NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
-            NSError*error;
-            _place=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+        NSArray *listItems = [responseString componentsSeparatedByString:@","];
+        
+        NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+        NSError*error;
+        _place=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
         for (id onePlace in _place) {
             Localization* singlePlace=[Localization initLocalizationWithID:[[onePlace valueForKey:@"Device"]description] andTime:[[onePlace valueForKey:@"Time"]description ] andGpsLong:[[onePlace valueForKey:@"GPSLong"]description] andGpsLati:[[onePlace valueForKey:@"GPSLati"]description] andBeacon:[[onePlace valueForKey:@"Place"]description] andUser:[[onePlace valueForKey:@"UserID"]description ] ];
             [_localizationArray addObject:singlePlace];
-
+            
         }
-         [self performSegueWithIdentifier:@"MainToMap" sender:self];
-       
+        [self performSegueWithIdentifier:@"MainToMap" sender:self];
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
     }
     else {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.navigationItem.hidesBackButton = NO; 
+        self.navigationItem.hidesBackButton = NO;
     }
     
 }
@@ -188,13 +188,13 @@
 
 - (void)viewDidLoad
 {
-   
+    
     [super viewDidLoad];
     _UUID = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-
-     [self performSegueWithIdentifier:@"MainToLogin" sender:self];
+    
+    [self performSegueWithIdentifier:@"MainToLogin" sender:self];
     self.navigationItem.hidesBackButton = YES;
-
+    
     // Do any additional setup after loading the view.
 }
 - (void)didReceiveMemoryWarning
@@ -206,7 +206,7 @@
 - (void)loginSucced:(NSDictionary *)dictForMain
 {
     _user=dictForMain;
-       
+    
 }
 
 #pragma mark - Navigation
@@ -215,9 +215,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"MainToLogin"]) {
-         MainAccessViewController *MAVC = (MainAccessViewController *)segue.destinationViewController;
-         MAVC.loginDelegate = self;
-         }
+        MainAccessViewController *MAVC = (MainAccessViewController *)segue.destinationViewController;
+        MAVC.loginDelegate = self;
+    }
     
     
     if ([segue.identifier isEqualToString:@"MainToBTList"]) {
@@ -227,18 +227,18 @@
     
     if ([segue.identifier isEqualToString:@"MainToSettings"]) {
         SettingsViewController *SVC = (SettingsViewController*)segue.destinationViewController;
-        SVC.userData = _user;        
+        SVC.userData = _user;
     }
     
     if ([segue.identifier isEqualToString:@"MainToMap"]) {
-         MapRootTableViewController *MRTVC = (MapRootTableViewController*)segue.destinationViewController;
+        MapRootTableViewController *MRTVC = (MapRootTableViewController*)segue.destinationViewController;
         //MRTVC.users=[[NSMutableArray alloc]init];
-      //  [MRTVC.users addObject:_user];
-          }
+        //  [MRTVC.users addObject:_user];
+    }
 }
 
 - (IBAction)logOut:(id)sender {
-  
+    
     [self performSegueWithIdentifier:@"MainToLogin" sender:self];
     
 }
@@ -247,7 +247,7 @@
 
 - (IBAction)mapPush:(id)sender {
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
-  
+    
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"getHistory" forKey:@"TYPE"];
     [request setPostValue:_UUID forKey:@"UUID"];
@@ -256,7 +256,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
     self.navigationItem.hidesBackButton = YES;
-
+    
     
 }
 @end

@@ -46,17 +46,18 @@ dispatch_queue_t backgroundQueue;
 
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-	CLLocation *lastLocation = [locations lastObject];
+	self.locationManager=nil;
+    CLLocation *lastLocation = [locations lastObject];
     _gpsLongitude=lastLocation.coordinate.longitude;
 	_gpsLatitude=lastLocation.coordinate.latitude;
     
     _timeMark=[lastLocation.timestamp timeIntervalSince1970];
 	CLLocationAccuracy accuracy = [lastLocation horizontalAccuracy];
 	NSLog(@"Received location %@ with accuracy %f", lastLocation, accuracy);
+    [self sendData];
+
     
-    [manager stopUpdatingLocation];
-   [self sendData];
-	
+   	
 }
 
 -(void)startMonitoringBT
@@ -94,8 +95,8 @@ dispatch_queue_t backgroundQueue;
     
     
     //for test
-    [self sendData];
-    //[self startMonitoringGPS];
+   // [self sendData];
+    [self startMonitoringGPS];
     
 
 
@@ -109,7 +110,7 @@ dispatch_queue_t backgroundQueue;
     NSNumber* gpsLongitude=[[NSNumber alloc]initWithFloat:_gpsLongitude];
     NSNumber* gpsLatitude=[[NSNumber alloc]initWithFloat:_gpsLatitude ];
     
-    _timeMark=[[NSDate date]timeIntervalSince1970];
+    //_timeMark=[[NSDate date]timeIntervalSince1970];
     
     NSNumber* timeMark=[[NSNumber alloc]initWithDouble:_timeMark ];
     
