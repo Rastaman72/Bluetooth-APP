@@ -23,8 +23,9 @@
 - (IBAction)mapPush:(id)sender;
 @property(nonatomic,assign)bool updateData;
 @property(nonatomic,retain) NSString *UUID;
-@property(nonatomic,retain)NSDictionary* place;
+
 @property(nonatomic,retain)NSMutableArray* localizationArray;
+@property(nonatomic,retain)NSMutableDictionary* userList;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property(nonatomic,retain)CLLocation *lastLocation;
 @property(nonatomic,strong)Spy* localSpy;

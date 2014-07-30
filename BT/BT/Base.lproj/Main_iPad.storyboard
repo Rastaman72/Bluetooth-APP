@@ -390,9 +390,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Bun-nu-AaF" kind="push" identifier="ListToMap" id="Tia-iH-Usc"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -401,6 +398,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="3m0-GN-QHb"/>
+                    <connections>
+                        <segue destination="Bun-nu-AaF" kind="push" identifier="ListToMap" id="3aU-78-SuE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjn-Go-Wej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -415,7 +415,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="oGT-x6-84Q">
-                                <rect key="frame" x="56" y="292" width="657" height="677"/>
+                                <rect key="frame" x="55" y="292" width="657" height="677"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3js-7W-vFR">
@@ -431,7 +431,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VZb-ow-K7h"/>
+                    <navigationItem key="navigationItem" id="VZb-ow-K7h">
+                        <barButtonItem key="leftBarButtonItem" title="To List" id="5xO-nR-hJ5"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="historyButton" destination="3js-7W-vFR" id="cs2-pa-lBN"/>
                         <outlet property="map" destination="oGT-x6-84Q" id="ZUy-Ec-CrS"/>

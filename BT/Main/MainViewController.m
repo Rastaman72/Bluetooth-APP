@@ -149,7 +149,7 @@
         
     }
     
-    else if (request.responseStatusCode == 210) {
+   /* else if (request.responseStatusCode == 210) {
         _localizationArray=[[NSMutableArray alloc]init];
         NSString *responseString = [request responseString];
         NSLog(@"%@",responseString);
@@ -167,6 +167,14 @@
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
+    }*/
+    else if (request.responseStatusCode == 215) {
+        self.userList=[[NSMutableDictionary alloc]init];
+        NSString *responseString = [request responseString];
+        NSData* data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+        NSError* error;
+        self.userList=[NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+        [self performSegueWithIdentifier:@"MainToMap" sender:self];
     }
     else {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -240,6 +248,8 @@
         MapRootTableViewController *MRTVC = (MapRootTableViewController*)segue.destinationViewController;
         MRTVC.historicalLocalization=[[NSMutableArray alloc]init];
         [MRTVC.historicalLocalization addObjectsFromArray:(NSArray*)_localizationArray];
+        MRTVC.users=[[NSMutableArray alloc]init];
+        [MRTVC.users addObjectsFromArray:self.userList];
     }
 }
 
@@ -255,16 +265,26 @@
     if(self.delegate.sendFree)
     {
          self.delegate.sendFree=false;
-    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
-    
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    [request setPostValue:@"getHistory" forKey:@"TYPE"];
-    [request setPostValue:_UUID forKey:@"UUID"];
-    [request setDelegate:self];
-    [request startAsynchronous];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Updating...";
-    self.navigationItem.hidesBackButton = YES;
+//    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
+//    
+//    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+//    [request setPostValue:@"getHistory" forKey:@"TYPE"];
+//    [request setPostValue:_UUID forKey:@"UUID"];
+//    [request setDelegate:self];
+//    [request startAsynchronous];
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    hud.labelText = @"Updating...";
+//    self.navigationItem.hidesBackButton = YES;
+        
+        NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
+        
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        [request setPostValue:@"getUserList" forKey:@"TYPE"];
+        [request setDelegate:self];
+        [request startAsynchronous];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Updating...";
+        self.navigationItem.hidesBackButton = YES;
     }
     
 }

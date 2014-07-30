@@ -64,7 +64,7 @@
     NSString* code;
    code=_bluetoothID;
 
-   
+
     NSString *UUID = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     NSNumber* gpsLongitude=[[NSNumber alloc]initWithFloat:_gpsLongitude];
