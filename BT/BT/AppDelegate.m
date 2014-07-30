@@ -15,6 +15,7 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.sendFree=true;
     return YES;
 }
 							

@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = YES;
     _loginField.text=@"rt";
@@ -48,12 +49,14 @@
 #pragma mark - Navigation
 
 - (IBAction)LoginPush:(id)sender {
-
+    
+    if(self.delegate.sendFree)
+    {
 if(![_loginField.text isEqualToString:@""] && ![_passwordFIeld.text isEqualToString:@""])
 {
+     self.delegate.sendFree=false;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
-    
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+       ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"Login" forKey:@"TYPE"];
     [request setPostValue:self.loginField.text forKey:@"Login"];
     [request setPostValue:self.passwordFIeld.text forKey:@"Password"];
@@ -70,7 +73,7 @@ else{
                                                cancelButtonTitle:@"OK"
                                                otherButtonTitles:nil];
     errorAlert.show;
-
+}
 }// Hide keyword
     
     // Clear text field
@@ -81,7 +84,7 @@ else{
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    	
+    self.delegate.sendFree=true;
     NSString *responseString = [request responseString];
     NSLog(@"%@",responseString);
      NSLog(@"%d",request.responseStatusCode);
@@ -186,6 +189,8 @@ else{
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+    
+     self.delegate.sendFree=true;
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
@@ -201,6 +206,9 @@ else{
 }
 
 - (IBAction)registerPush:(id)sender {
+    if(self.delegate.sendFree)
+    {
+         self.delegate.sendFree=false;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"loadAccountType" forKey:@"TYPE"];
@@ -212,6 +220,7 @@ else{
     self.navigationItem.hidesBackButton = YES;
 
   }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

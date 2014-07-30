@@ -27,7 +27,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 
-    _map.showsUserLocation = YES;
+    //_map.showsUserLocation = YES;
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = _lastLocation.coordinate.latitude;
     zoomLocation.longitude= _lastLocation.coordinate.longitude;

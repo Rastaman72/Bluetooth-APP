@@ -33,4 +33,6 @@
 @property (nonatomic,retain) ESTBeaconRegion* beaconRegion;
 @property (nonatomic,retain) ESTBeacon* beacon;
 
+@property (nonatomic,strong)    AppDelegate *delegate ;
+
 @end

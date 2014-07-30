@@ -16,5 +16,5 @@
 @property (nonatomic,assign)float gpsLongitude;
 @property  (nonatomic,assign)float gpsLatitude;
 @property  (nonatomic,assign)double timeMark;
-
+@property (nonatomic,strong)    AppDelegate *delegate ;
 @end

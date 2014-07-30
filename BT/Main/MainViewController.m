@@ -26,6 +26,7 @@
 	[_locationManager setDelegate:self];
 	[_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
 	[_locationManager startUpdatingLocation];
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
 }
 
@@ -106,6 +107,9 @@
 
 -(void)getNewData
 {
+    if(self.delegate.sendFree)
+    {
+         self.delegate.sendFree=false;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
     NSString* userLogin =[[NSString alloc]initWithString:[[_user valueForKey:@"Login"]description]];
@@ -121,12 +125,13 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
     self.navigationItem.hidesBackButton = YES;
-    
+    }
 }
 
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     if (request.responseStatusCode == 400) {
         NSString *responseString = [request responseString];
         NSLog(@"%@",responseString);
@@ -172,6 +177,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
@@ -232,8 +238,8 @@
     
     if ([segue.identifier isEqualToString:@"MainToMap"]) {
         MapRootTableViewController *MRTVC = (MapRootTableViewController*)segue.destinationViewController;
-        //MRTVC.users=[[NSMutableArray alloc]init];
-        //  [MRTVC.users addObject:_user];
+        MRTVC.historicalLocalization=[[NSMutableArray alloc]init];
+        [MRTVC.historicalLocalization addObjectsFromArray:(NSArray*)_localizationArray];
     }
 }
 
@@ -246,6 +252,9 @@
 
 
 - (IBAction)mapPush:(id)sender {
+    if(self.delegate.sendFree)
+    {
+         self.delegate.sendFree=false;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -256,7 +265,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
     self.navigationItem.hidesBackButton = YES;
-    
+    }
     
 }
 @end

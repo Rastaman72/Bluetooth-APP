@@ -23,5 +23,6 @@
 @property (retain,nonatomic) NSString* selectAccountType;
 @property (weak, nonatomic) IBOutlet UITextField *repeatPasswordField;
 @property (nonatomic,retain) NSString* tPassword;
+@property (nonatomic,strong)    AppDelegate *delegate ;
 
 @end

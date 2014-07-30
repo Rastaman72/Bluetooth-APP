@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad
 {
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if([[[_userData valueForKey:@"Role"] description]rangeOfString:@"Student"].location != NSNotFound)
         _teacherButton.enabled=false;
     else
@@ -47,6 +48,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     if (request.responseStatusCode == 400) {
         // _result.text = @"Invalid code";
     } else if (request.responseStatusCode == 403) {
@@ -203,6 +205,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
@@ -247,6 +250,9 @@
 
 - (IBAction)studentPush:(id)sender
 {
+    if(self.delegate.sendFree)
+    {
+         self.delegate.sendFree=false;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"loadStudentSettings" forKey:@"TYPE"];
@@ -255,9 +261,13 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
     self.navigationItem.hidesBackButton = YES;
+    }
 }
 
 - (IBAction)teacherPush:(id)sender {
+    if(self.delegate.sendFree)
+    {
+         self.delegate.sendFree=false;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"loadTeacherSettings" forKey:@"TYPE"];
@@ -266,6 +276,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
     self.navigationItem.hidesBackButton = YES;
+    }
 }
 
 - (IBAction)backPush:(id)sender {

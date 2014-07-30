@@ -28,5 +28,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *SaveButton;
 @property (nonatomic,retain)NSDictionary* student;
+@property (nonatomic,strong)    AppDelegate *delegate ;
 
 @end

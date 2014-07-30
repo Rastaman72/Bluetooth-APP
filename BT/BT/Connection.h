@@ -12,4 +12,6 @@
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
 #import "MBProgressHUD.h"
+#import "AppDelegate.h"
+
 #endif

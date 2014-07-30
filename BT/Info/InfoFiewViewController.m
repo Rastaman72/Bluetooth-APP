@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setLocationManager:[[CLLocationManager alloc] init]];
 	[_locationManager setDelegate:self];
 	[_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
@@ -57,6 +58,9 @@
 }
 
 - (IBAction)SQLPush:(id)sender {
+  
+        if(self.delegate.sendFree)
+    {
     NSString* code;
    code=_bluetoothID;
 
@@ -67,7 +71,7 @@
     NSNumber* gpsLatitude=[[NSNumber alloc]initWithFloat:_gpsLatitude ];
     NSNumber* timeMark=[[NSNumber alloc]initWithDouble:_timeMark ];
 
-
+        self.delegate.sendFree=false;
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"deviceInfo" forKey:@"TYPE"];
     [request setPostValue:UUID forKey:@"UUID"];
@@ -95,14 +99,14 @@
     // Hide keyword
     
     // Clear text field
-    
+    }
 }
 
 
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    
+    self.delegate.sendFree=true;
     if (request.responseStatusCode == 400) {
         // _result.text = @"Invalid code";
     } else if (request.responseStatusCode == 403) {
@@ -123,6 +127,7 @@
 //        NSDictionary *responseDict = [forJSON JSONValue];
 //        
         // _result.text = responseString;
+        self.delegate.sendFree=true;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.navigationItem.hidesBackButton = NO;
         
@@ -137,6 +142,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+    self.delegate.sendFree=true;
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
       self.navigationItem.hidesBackButton = NO;

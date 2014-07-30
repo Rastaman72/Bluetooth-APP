@@ -15,6 +15,7 @@ dispatch_queue_t backgroundQueue;
 
 -(Spy*)initWithUser:(NSDictionary*)user 
 {
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     Spy* newSpy=[[Spy alloc]init];
     if(newSpy)
     {
@@ -104,7 +105,9 @@ dispatch_queue_t backgroundQueue;
 
 -(void)sendData
 {
-    
+    if(self.delegate.sendFree)
+    {
+         self.delegate.sendFree=false;
     NSString *UUID = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     NSNumber* gpsLongitude=[[NSNumber alloc]initWithFloat:_gpsLongitude];
@@ -130,10 +133,21 @@ dispatch_queue_t backgroundQueue;
     
     [request setPostValue:userID forKey:@"userID"];
     
-    [request setDelegate:self];
-    [request startAsynchronous];
-    
+        [request setDelegate:self];
+        [request startAsynchronous];
+    }
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    self.delegate.sendFree=true;
     
     
 }
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    self.delegate.sendFree=true;
+}
+
 @end

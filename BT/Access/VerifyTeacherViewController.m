@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     _VerifyField.text=@"Test1";
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Do any additional setup after loading the view.
 }
 
@@ -48,6 +49,9 @@
 */
 
 - (IBAction)Verify:(id)sender {
+    if(self.delegate.sendFree)
+    {
+        self.delegate.sendFree=false;
     NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"Verify" forKey:@"TYPE"];
@@ -57,6 +61,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Veryfing...";
     self.navigationItem.hidesBackButton = YES;
+    }
     
 }
 
@@ -64,7 +69,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    
+      self.delegate.sendFree=true;
     if (request.responseStatusCode == 400) {
         // _result.text = @"Invalid code";
     }
@@ -101,6 +106,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;

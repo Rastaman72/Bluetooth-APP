@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self startMonitoringGPS];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -108,15 +108,41 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+        MapViewController *MVC = (MapViewController *)segue.destinationViewController;
+    MVC.lastLocation=[self location];
+    MVC.localizationArray =[[NSMutableArray alloc]init];
+    [MVC.localizationArray addObjectsFromArray:_historicalLocalization];
+
 }
-*/
+
+
+
+- (void)startMonitoringGPS
+{
+    [self setLocationManager:[[CLLocationManager alloc] init]];
+	[_locationManager setDelegate:self];
+	[_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+	[_locationManager startUpdatingLocation];
+    // Do any additional setup after loading the view.
+    
+}
+
+
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *lastLocation = [locations lastObject];
+    self.location=lastLocation;
+	CLLocationAccuracy accuracy = [lastLocation horizontalAccuracy];
+	NSLog(@"Received location %@ with accuracy %f", lastLocation, accuracy);
+    
+   	
+}
+
 
 @end

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MapViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface MapRootTableViewController : UITableViewController
 @property(nonatomic,retain) NSMutableArray* users;
+@property(nonatomic,retain)CLLocation *location;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic,retain)NSMutableArray* historicalLocalization;
 @end

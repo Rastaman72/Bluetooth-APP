@@ -29,4 +29,5 @@
 @property(nonatomic,retain)CLLocation *lastLocation;
 @property(nonatomic,strong)Spy* localSpy;
 @property(nonatomic,strong)NSTimer *spyTimer;
+@property (nonatomic,strong)    AppDelegate *delegate ;
 @end

@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Do any additional setup after loading the view.
 //    self.departmentArray = [[NSArray alloc] initWithObjects:@"EIM",@"ZMITAC",@"INF",@"GK", nil];
 //    self.subjectArray = [[NSArray alloc] initWithObjects:@"test1",@"test2",@"test3",@"test4",@"test5" , nil];
@@ -119,6 +120,9 @@
 #warning SYFFFFF
 #warning SYFFFFF
 #warning SYFFFFF
+    if(self.delegate.sendFree)
+    {
+         self.delegate.sendFree=false;
     NSString* test =[[NSString alloc]initWithString:[[_teacher valueForKey:@"Login"]description]];
     test = [test stringByReplacingOccurrencesOfString:@"(\n" withString:@""];
     test = [test stringByReplacingOccurrencesOfString:@"\n)" withString:@""];
@@ -138,14 +142,14 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
     self.navigationItem.hidesBackButton = YES;
-    
+    }
 }
 
 
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    
+      self.delegate.sendFree=true;
     if (request.responseStatusCode == 400) {
         // _result.text = @"Invalid code";
     } else if (request.responseStatusCode == 403) {
@@ -173,6 +177,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;

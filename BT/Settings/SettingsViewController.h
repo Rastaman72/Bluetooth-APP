@@ -43,4 +43,6 @@
 @property(nonatomic,retain)NSMutableArray*tempYearArray;
 @property(nonatomic,retain)NSMutableArray*tempTermArray;
 @property(nonatomic,retain)NSMutableArray*tempSpecArray;
+
+@property (nonatomic,strong)    AppDelegate *delegate ;
 @end

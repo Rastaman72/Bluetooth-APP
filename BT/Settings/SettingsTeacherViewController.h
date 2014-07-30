@@ -22,6 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *SaveTButton;
 - (IBAction)SaveChange:(id)sender;
 @property (nonatomic,retain)NSDictionary* teacher;
-
+@property (nonatomic,strong)    AppDelegate *delegate ;
 
 @end

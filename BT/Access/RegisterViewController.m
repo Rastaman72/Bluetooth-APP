@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.selectAccountType = [[NSString alloc]init];
     self.selectAccountType=[self.accountTypeArray objectAtIndex:0];
     _loginField.delegate=self;
@@ -59,9 +60,12 @@
 }
 
 - (void)sendRequest {
-    if([_passwordField.text isEqualToString:_repeatPasswordField.text])
+    if(self.delegate.sendFree)
     {
         
+    if([_passwordField.text isEqualToString:_repeatPasswordField.text])
+    {
+         self.delegate.sendFree=false;
         NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
         ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         
@@ -90,6 +94,7 @@
                                                    otherButtonTitles:nil];
         errorAlert.show;
         
+    }
     }
 }
 
@@ -129,7 +134,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    
+      self.delegate.sendFree=true;
     if (request.responseStatusCode == 400) {
         // _result.text = @"Invalid code";
     } else if (request.responseStatusCode == 403) {
@@ -195,6 +200,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;

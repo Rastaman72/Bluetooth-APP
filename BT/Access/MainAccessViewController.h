@@ -30,4 +30,5 @@
 @property (nonatomic,retain) NSDictionary *responseDict;
 @property (nonatomic,retain) NSDictionary *responseDict1;
 @property(nonatomic,retain)NSMutableArray*accountTypeArray;
+@property (nonatomic,strong)    AppDelegate *delegate ;
 @end

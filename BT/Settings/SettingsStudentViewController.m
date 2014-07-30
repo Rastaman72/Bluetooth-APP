@@ -28,13 +28,7 @@
 {
     
     [super viewDidLoad];
-  /*  self.departmentArray = [[NSArray alloc] initWithObjects:@"AEII",@"Green",@"Orange",@"Purple",@"Red",@"Yellow" , nil];
-    self.yearArray = [[NSArray alloc] initWithObjects:@"I",@"II",@"III",@"IV",@"V" , nil];
-    
-    self.termArray = [[NSArray alloc] initWithObjects:@"I",@"II",@"III",@"IV",@"V",@"VI",@"VII",@"VIII",@"IX",@"X" , nil];
-    self.specArray = [[NSArray alloc] initWithObjects:@"gkio",@"bdisd",@"psi", nil];
-    */
-    
+      self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
     self.selectDepartment = [[NSString alloc]init];
         self.selectSpec = [[NSString alloc]init];
     // Do any additional setup after loading the view.
@@ -192,10 +186,49 @@
 */
 
 
-
+-(BOOL)validTermAndYear:(int)selectYear term:(int)selectTerm
+{
+    switch (selectYear) {
+        case 1:
+            if (selectTerm==1 || selectTerm==2) {
+                return true;
+            }
+            break;
+            
+        case 2:
+            if (selectTerm==3 || selectTerm==4) {
+                return true;
+            }
+            break;
+            
+        case 3:
+            if (selectTerm==5 || selectTerm==6) {
+                return true;
+            }
+            break;
+            
+        case 4:
+            if (selectTerm==7 || selectTerm==8) {
+                return true;
+            }
+            break;
+            
+        case 5:
+            if (selectTerm==9 || selectTerm==10) {
+                return true;
+            }
+            break;
+            
+        default:
+            break;
+    }
+    return false;
+}
 
 - (IBAction)SaveSChange:(id)sender {
-    
+    if(self.delegate.sendFree)
+    {
+        
 #warning SYFFFFF
 #warning SYFFFFF
 #warning SYFFFFF
@@ -205,8 +238,13 @@
     test = [test stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
     
-    NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        if([self validTermAndYear:_selectYear term:_selectTerm])
+    {
+         self.delegate.sendFree=false;
+        NSURL *url = [NSURL URLWithString:@"http://www.bluetoothtestniemiec.w8w.pl"];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        
+
     NSNumber* year=[[NSNumber alloc]initWithInt:_selectYear];
     NSNumber* term=[[NSNumber alloc]initWithInt:_selectTerm];
     
@@ -223,7 +261,18 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Updating...";
     self.navigationItem.hidesBackButton = YES;
+    }
     
+    else{
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"Choose correct year and term"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+    errorAlert.show;
+    }
+    }
+
 }
 
 
@@ -231,6 +280,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     if (request.responseStatusCode == 400) {
         NSString *responseString = [request responseString];
         NSLog(@"%@",responseString);
@@ -272,6 +322,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+      self.delegate.sendFree=true;
     NSError *error = [request error];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.navigationItem.hidesBackButton = NO;
